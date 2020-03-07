@@ -492,7 +492,6 @@ class Game extends React.Component {
 
         //console.log(typeof((this.addDuration(newDate))))
         const e = 1
-        //refresh state
         this.setState(
             (prevState)=>{
 
