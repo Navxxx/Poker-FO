@@ -11,6 +11,7 @@ class App extends React.Component {
         this.state = {
             // isLoggedIn: false,
             // user :""
+
             isLoggedIn: false,
             // userName :"Tata",
             user : {}
@@ -20,19 +21,28 @@ class App extends React.Component {
 
     }
     
-    componentDidMount() {        
-        //this.handleLog("Toto")
+    componentDidMount() {     
+                //////////// DEBUG NO LOGIN
+   
+        this.handleLog("toto", "toto")
     }
 
-    handleLog(e) {
+    handleLog(e,f) {
         //console.log(e)
-        this.setState({isLoggedIn:true, user :e })
-        axios.get("/Krypton/BO_CURRENT/Model/RequestGet/getUser.php?user=" + e)
+    
+        axios.get('/PokerBO/Model/Requests/getcheckid.php?name_get=' + e + '&password_get='+ f)
         .then(res => {
             const userData = res.data; 
-            this.setState({
-                user: userData
-            });
+            if (userData) {
+                // console.log(userData)
+                this.setState({
+                    user: userData,
+                    isLoggedIn:true
+                });
+            }
+            else {
+                alert("Wrong password")
+            }
         })
     }
 
@@ -44,20 +54,23 @@ class App extends React.Component {
     render(){
         //console.log(this.state.user)
         return (
-            ///////  login.
-            this.state.isLoggedIn ?
-            <div>
-                <Game user={this.state.user} userName={this.state.userName} handleUnLog={this.handleUnLog}/>
-             </div>
-            :
-            <div>
-                <Login handleLog={this.handleLog}/>
-            </div>
-
-            ///// debug no login.
+            /////  login.
+            // this.state.isLoggedIn ?
             // <div>
-            // <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
+            //     <Game user={this.state.user} userName={this.state.userName} handleUnLog={this.handleUnLog}/>
+            //  </div>
+            // :
+            // <div>
+
+            //     <Login
+            //         handleLog={this.handleLog}
+            //     />
             // </div>
+
+            /// debug no login.
+            <div>
+            <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
+            </div>
 
 
 

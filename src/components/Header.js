@@ -1,26 +1,37 @@
 import React from "react";
 
-function Header(props) {
+class Header extends React.Component {
 
-    const headerStyle = {
-        margin : "0px 0px 0px 0px",
-        padding : "10px 10px 10px 10px",
-        backgroundColor : "black",
-        color : "white"
+    constructor(props){
+        super(props)
+        this.state = {
+        }
+
     }
-    const decoLinkStyle = {
-        float :"right",
-        color :"white"
-    } 
 
-    return (
-        <div style={headerStyle}>
-            <p>
-                Hello {props.user._name}
-                <a onClick={()=>props.handleUnLog()} href="http://localhost:3000/" style={decoLinkStyle}>deco</a>
-            </p>
-        </div>
-    )
+    render(){
+        const headerStyle = {
+            margin : "0px 0px 0px 0px",
+            padding : "10px 10px 10px 10px",
+            backgroundColor : "black",
+            color : "white"
+        }
+        const decoLinkStyle = {
+            float :"right",
+            color :"white"
+        } 
+        // console.log(this.props.user)
+
+        return (
+            <div style={headerStyle}>
+                <p>
+                    Hello {this.props.user.name}
+                    <a onClick={()=>this.props.handleUnLog()} href="http://localhost:3000/" style={decoLinkStyle}>deco</a>
+                </p>
+            </div>
+        )
+    }
 }
+
 
 export default Header;

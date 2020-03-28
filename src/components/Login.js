@@ -43,7 +43,7 @@ class Login extends React.Component {
                     <br/>
                 </form>
                 {/* <button onClick={()=>this.handleSubmit(this.props)}>Login</button> */}
-                <button onClick={()=>this.props.handleLog(this.state.firstname)} disabled={this.state.firstname.length===0}>Login</button>
+                <button onClick={()=>this.props.handleLog(this.state.firstname,this.state.password )} disabled={this.state.password.length===0 || this.state.firstname.length===0}>Login</button>
                 <p>Name : {this.state.firstname}</p>
                 <p>Password : {this.state.password}</p>
             </div>
