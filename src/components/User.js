@@ -27,7 +27,7 @@ class User extends React.Component {
                 </div>
                 Name : {this.props.name} 
                 <br/>
-                Cave : {this.props.cash} 
+                Cave : {parseInt(this.props.cash)-parseInt(this.props.chips)} 
                 <br/>
                 <div onClick={()=>this.props.handleClick(this.props.id)}>
                     {this.props.fold === 1

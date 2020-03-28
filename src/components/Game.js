@@ -21,6 +21,7 @@ class Game extends React.Component {
         this.handleBet = this.handleBet.bind(this)
         this.handleDealChange = this.handleDealChange.bind(this)
 
+        this.handlePotClick = this.handlePotClick.bind(this)
     }
     
     handleClick(e) {
@@ -120,6 +121,36 @@ class Game extends React.Component {
           })
     }
 
+    handlePotClick() {
+        /// Update Pot
+        axios.get("PokerBO/Model/Requests/getallbets.php")
+        .then(res => {
+            const totalbet = res.data; 
+            // console.log(this.state.potData)
+            this.setState(
+                (prevState)=>{
+                    let newStatePot = prevState.potData
+                    prevState.potData._amount = parseInt(prevState.potData._amount) + totalbet
+                    return({
+                        potData: newStatePot
+                    })
+                }
+            )
+            const form = new FormData()
+            form.set('amount_post', totalbet)
+            axios.post('/PokerBO/Model/Requests/postaddtopot.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+            })
+              
+            console.log(totalbet)
+        })
+
+        // Udpate cash
+
+        // Clean Bets
+
+    }
+
     componentDidMount() {        
         ///// Get User list ///
         axios.get("PokerBO/Model/Requests/getlist.php?")
@@ -174,6 +205,7 @@ class Game extends React.Component {
                     {/* {this.state.user} */}
                     <Pot
                         pot={this.state.potData}
+                        handlePotClick={this.handlePotClick}
                     />
                     <UserList
                         users={this.state.users}

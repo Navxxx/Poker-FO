@@ -22,7 +22,7 @@ class Pot extends React.Component {
         return (
              <div style={headerStyle}>
                 Pot : {this.props.pot._amount}
-                <button>Click to Pot</button>
+                <button onClick={()=>this.props.handlePotClick()}>Click to Pot</button>
             </div>
         )
     }
