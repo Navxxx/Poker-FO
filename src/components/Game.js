@@ -28,6 +28,7 @@ class Game extends React.Component {
         this.handlePotClick = this.handlePotClick.bind(this)
     }
     
+
     handleClick(e) {
         this.setState({focus:"true"})
         // console.log(e)
@@ -68,18 +69,20 @@ class Game extends React.Component {
     }
 
 
-    handleBet(e) {
+    handleBet(e,f) {
+        // console.log(e,f)
         this.setState(
             (prevState)=>{
                 const newStateUsers = prevState.users.map(
                     (user, i) => {
-                        if (i+1 === e) {
+                        if (i+1 === f) {
                             user._fold = 0;
                             user._chips = e
                         }
                         return user
                     }
                 )
+                return ({users:newStateUsers})
             }
         )
 
@@ -130,7 +133,7 @@ class Game extends React.Component {
         axios.get(domain+"getallbets.php")
         .then(res => {
             const totalbet = res.data; 
-            // console.log(this.state.potData)
+            console.log(totalbet)
             this.setState(
                 (prevState)=>{
                     let newStatePot = prevState.potData
@@ -143,7 +146,7 @@ class Game extends React.Component {
         })
 
         // Clear state bets fold
-        console.log(this.state.users)
+        // console.log(this.state.users)
 
         this.setState(
             (prevState)=>{
@@ -217,6 +220,7 @@ class Game extends React.Component {
 
 
     render(){
+        console.log(this.state.users)
 
     // console.log(this.state.potData)
 

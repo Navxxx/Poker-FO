@@ -7,10 +7,8 @@ class Action extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            bet : 0,
-            actionStatus: "normal"
+            bet : 0
         }
-        this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.eraseTextInput = this.eraseTextInput.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,17 +28,7 @@ class Action extends React.Component {
     }
 
 
-    handleClick(){
-        this.state.actionStatus==="normal"
-        ?
-        this.setState ({
-            actionStatus:"pasnormal"
-        })
-        :
-        this.setState ({
-            actionStatus:"normal"
-        })
-    }
+
 
     render() {
         //console.log(this.props.userfocus)
@@ -63,7 +51,7 @@ class Action extends React.Component {
                         eraseTextInput={this.eraseTextInput}
                     />
                     {/* <button onClick={this.handleClick}>Cancel</button> */}
-                    <button onClick={()=>this.props.handleBet(this.state.bet)}>Bet</button>
+                    <button onClick={()=>this.props.handleBet(this.state.bet,this.props.userfocus._iduser)}>Bet</button>
                     <button onClick={()=>this.props.handleFold(this.props.userfocus._iduser)}>fold</button>
 
                 </div>
