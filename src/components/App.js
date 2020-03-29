@@ -3,7 +3,8 @@ import Game from "./Game.js";
 import Login from "./Login.js";
 import axios from 'axios';
 
-
+const domain = process.env.REACT_APP_DOMAIN
+// console.log(domain)
 class App extends React.Component {
 
     constructor(){
@@ -30,7 +31,7 @@ class App extends React.Component {
     handleLog(e,f) {
         //console.log(e)
     
-        axios.get('/PokerBO/Model/Requests/getcheckid.php?name_get=' + e + '&password_get='+ f)
+        axios.get(domain+'getcheckid.php?name_get=' + e + '&password_get='+ f)
         .then(res => {
             const userData = res.data; 
             if (userData) {
