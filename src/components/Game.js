@@ -18,7 +18,8 @@ class Game extends React.Component {
             users: [],
             userfocus: [],
             currentdealer: [],
-            potData:[]
+            potData:[],
+            testInputfocus : 0,
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleFold = this.handleFold.bind(this)
@@ -26,6 +27,7 @@ class Game extends React.Component {
         this.handleDealChange = this.handleDealChange.bind(this)
 
         this.handlePotClick = this.handlePotClick.bind(this)
+        this.setInputfocus = this.setInputfocus.bind(this)
     }
     
 
@@ -39,6 +41,9 @@ class Game extends React.Component {
                 this.setState({userfocus:user})
             )
         })
+
+        //focus text
+        this.setInputfocus(1);
     }
 
     // filter(word => word.length > 6)
@@ -227,10 +232,15 @@ class Game extends React.Component {
 
     }  
 
+    setInputfocus(e){
+        this.setState({
+            testInputfocus : e
+        }) 
+    }
 
     render(){
-        console.log(this.state.users)
-
+        // console.log(this.state.users)
+    // console.log(this.state.testInputfocus)
     // console.log(this.state.potData)
 
         return (
@@ -252,6 +262,9 @@ class Game extends React.Component {
                     />
 
                     <Action     
+                        testInputfocus={this.state.testInputfocus}
+                        setInputfocus={this.setInputfocus}
+
                         userfocus={this.state.userfocus}
                         handleFold={this.handleFold}
                         handleBet={this.handleBet}

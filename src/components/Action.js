@@ -49,10 +49,29 @@ class Action extends React.Component {
                         handleChange={this.handleChange}
                         handleBet={this.props.handleBet}
                         eraseTextInput={this.eraseTextInput}
+                        testInputfocus = {this.props.testInputfocus}
+                        setInputfocus={this.props.setInputfocus}
+                        userfocus={this.props.userfocus}
+
                     />
                     {/* <button onClick={this.handleClick}>Cancel</button> */}
-                    <button onClick={()=>this.props.handleBet(this.state.bet,this.props.userfocus._iduser)}>Bet</button>
-                    <button onClick={()=>this.props.handleFold(this.props.userfocus._iduser)}>fold</button>
+                    <button onClick={
+                        ()=>{
+                            this.props.handleBet(this.state.bet,this.props.userfocus._iduser)
+                            this.eraseTextInput()
+                        }
+                        }>
+                            Bet
+                    </button>
+
+                    <button onClick={
+                        ()=>{
+                            this.props.handleFold(this.props.userfocus._iduser)
+                            this.eraseTextInput()
+                        }
+                        }>
+                            fold
+                    </button>
 
                 </div>
             {/* } */}

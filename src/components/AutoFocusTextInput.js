@@ -15,6 +15,16 @@ class AutoFocusTextInput extends React.Component {
     componentDidMount() {
         this.textInput.current.focus();
         this.props.eraseTextInput();
+        // console.log("mount")
+
+      }
+
+      componentDidUpdate(prevProps) {
+        if (this.props.testInputfocus !== 0) {
+            this.textInput.current.focus();
+            // console.log("update")
+            
+        }
       }
     
       handleKeyPress = (event) => {
@@ -22,6 +32,7 @@ class AutoFocusTextInput extends React.Component {
             this.props.handleBet(this.props.bet)
             this.props.eraseTextInput()
         }
+        this.props.handleBet(this.props.bet,this.props.userfocus._iduser)
       }
 
     render() {
@@ -35,7 +46,6 @@ class AutoFocusTextInput extends React.Component {
                         name="bet"
                         onChange={this.props.handleChange}
                         onKeyPress={this.handleKeyPress}
-
                     />
             </div>
         )
