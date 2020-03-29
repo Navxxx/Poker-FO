@@ -50,7 +50,6 @@ class Game extends React.Component {
                     (user, i) => {
                         if (i+1 === e) {
                             user._fold = 1;
-                            user._chips = 0
                         }
                         return user
                     }

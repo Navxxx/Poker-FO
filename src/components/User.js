@@ -30,12 +30,10 @@ class User extends React.Component {
                 Cave : {parseInt(this.props.cash)-parseInt(this.props.chips)} 
                 <br/>
                 <div onClick={()=>this.props.handleClick(this.props.id)}>
-                    {this.props.fold === 1
-                        ?
-                        <span>Fold</span>
-                        :
+                    
                         <span>Mise : {this.props.chips}</span>
-                    }
+                        <span>{this.props.fold === 1?" - Fold":""}</span>
+
                 </div>
                 {/* Focus : {this.state.focus===false?"false":"true"} */}
                 Focus : {this.props.userfocus._name===this.props.name?"yes":"no"}
