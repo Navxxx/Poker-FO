@@ -5,6 +5,10 @@ import Header from "./Header.js";
 import Pot from "./Pot.js";
 import axios from 'axios';
 
+
+const domain = process.env.REACT_APP_DOMAIN
+// console.log(domain)
+
 class Game extends React.Component {
 
     constructor(props){
@@ -122,8 +126,8 @@ class Game extends React.Component {
     }
 
     handlePotClick() {
-        /// Update Pot
-        axios.get("PokerBO/Model/Requests/getallbets.php")
+        /// Update State Pot
+        axios.get(domain+"getallbets.php")
         .then(res => {
             const totalbet = res.data; 
             // console.log(this.state.potData)
@@ -136,18 +140,31 @@ class Game extends React.Component {
                     })
                 }
             )
-            const form = new FormData()
-            form.set('amount_post', totalbet)
-            axios.post('/PokerBO/Model/Requests/postaddtopot.php', form, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-            })
-              
-            console.log(totalbet)
         })
 
-        // Udpate cash
+        // Clear state bets fold
+        console.log(this.state.users)
 
-        // Clean Bets
+        this.setState(
+            (prevState)=>{
+                const newStateUsers = prevState.users.map(
+                    (user, i) => {
+                        user._fold = 0;
+                        const cash = user._cash;
+                        user._cash = cash - user._chips;
+                        user._chips = 0;
+                        return user
+                    }
+                )
+            }
+        )
+
+        // Call BE Fonction 4 add to pot
+        const form = new FormData()
+        // form.set('player_post', e)
+        axios.post(domain+'postaddtopot.php', form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+          })
 
     }
 
@@ -174,7 +191,14 @@ class Game extends React.Component {
         // set interval to display duratino in real time
         setInterval( () => {
             // console.log(this.props.user.iduser)
-
+            ////// Get Pot
+            axios.get("PokerBO/Model/Requests/getpot.php?")
+            .then(res => {
+                const potData = res.data; 
+                this.setState({
+                    potData: potData,
+                });
+            })
             ///// Get User list ///
             axios.get("PokerBO/Model/Requests/getlistordered.php?usersitnumber="+this.props.user.sitnumber)
             .then(res => {
@@ -187,7 +211,7 @@ class Game extends React.Component {
                 
             })
 
-        },1000)
+        },5000)
 
     }  
 
