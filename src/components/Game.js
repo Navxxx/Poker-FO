@@ -129,30 +129,16 @@ class Game extends React.Component {
     }
 
     handlePotClick() {
-        /// Update State Pot
-        axios.get(domain+"getallbets.php")
-        .then(res => {
-            const totalbet = res.data; 
-            console.log(totalbet)
-            this.setState(
-                (prevState)=>{
-                    let newStatePot = prevState.potData
-                    prevState.potData._amount = parseInt(prevState.potData._amount) + totalbet
-                    return({
-                        potData: newStatePot
-                    })
-                }
-            )
-        })
 
         // Clear state bets fold
         // console.log(this.state.users)
-
+        let amounttotalbets = 0;
         this.setState(
             (prevState)=>{
                 const newStateUsers = prevState.users.map(
                     (user, i) => {
-                        user._fold = 0;
+                        // user._fold = 0;
+                        amounttotalbets += parseInt(user._chips);
                         const cash = user._cash;
                         user._cash = cash - user._chips;
                         user._chips = 0;
@@ -164,6 +150,27 @@ class Game extends React.Component {
                 })
             }
         )
+
+        /// Update State Pot
+        axios.get(domain+"getallbets.php")
+        .then(res => {
+            const totalbet = res.data; 
+            // console.log(this.state.potData)
+
+            this.setState(
+                (prevState)=>{
+                    let newStatePot = prevState
+                    newStatePot.potData._amount = parseInt(prevState.potData._amount) + parseInt(amounttotalbets)
+                    // console.log(newStatePot)
+
+                    return({
+                        potData: newStatePot.potData
+                    })
+                }
+            )
+        })
+
+
 
         // Call BE Fonction 4 add to pot
         const form = new FormData()
