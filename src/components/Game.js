@@ -159,6 +159,9 @@ class Game extends React.Component {
                         return user
                     }
                 )
+                return({
+                    users: newStateUsers
+                })
             }
         )
 
