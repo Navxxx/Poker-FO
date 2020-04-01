@@ -3,6 +3,8 @@ import UserList from "./UserList.js";
 import Action from "./Action.js";
 import Header from "./Header.js";
 import Pot from "./Pot.js";
+import Results from "./Results.js";
+
 import axios from 'axios';
 
 
@@ -228,7 +230,7 @@ class Game extends React.Component {
                 
             })
 
-        },5000)
+        },1000)
 
     }  
 
@@ -239,7 +241,7 @@ class Game extends React.Component {
     }
 
     render(){
-        // console.log(this.state.users)
+        console.log(this.state.users)
     // console.log(this.state.testInputfocus)
     // console.log(this.state.potData)
 
@@ -250,6 +252,10 @@ class Game extends React.Component {
                 <div>
                     <Header user={this.props.user} handleUnLog={this.props.handleUnLog}/>
                     {/* {this.state.user} */}
+                    <Results 
+                        users={this.state.users}
+
+                    />
                     <Pot
                         pot={this.state.potData}
                         handlePotClick={this.handlePotClick}
