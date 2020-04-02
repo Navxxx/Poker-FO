@@ -22,7 +22,8 @@ class AutoFocusTextInput extends React.Component {
       componentDidUpdate(prevProps) {
         if (this.props.testInputfocus !== 0) {
             this.textInput.current.focus();
-            // console.log("update")
+            // console.log("update");
+            this.props.setInputfocus(0);
             
         }
       }

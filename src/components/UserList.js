@@ -29,6 +29,7 @@ class UserList extends React.Component {
                 fold={user._fold}
                 chips={user._chips}
                 userfocus={this.props.userfocus}
+                cards={this.props.cards}
             />
         )
         return (

@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "./Card.js";
 
 
 
@@ -39,7 +40,20 @@ class User extends React.Component {
                 Focus : {this.props.userfocus._name===this.props.name?"yes":"no"}
 
                 <br/>
-                <br/>
+                <Card
+                    idcard={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._idcard}
+                    num={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._num}
+                    family={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._family}
+                    display={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._display}
+                 />
+                 <Card
+                    idcard={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._idcard}
+                    num={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._num}
+                    family={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._family}
+                    display={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._display}
+                 />
+                                 <br/>
+
              </div>
 
         )

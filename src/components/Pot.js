@@ -1,4 +1,5 @@
 import React from "react";
+import Deck from "./Deck.js";
 
 
 class Pot extends React.Component {
@@ -11,6 +12,8 @@ class Pot extends React.Component {
 
 
     render() {
+        // console.log(this.props.cards)
+
         const headerStyle = {
             margin : "0px 0px 0px 0px",
             padding : "10px 10px 10px 10px",
@@ -22,6 +25,13 @@ class Pot extends React.Component {
         return (
              <div style={headerStyle}>
                 Pot : {this.props.pot._amount}
+                <br/>
+                <br/>
+
+                <Deck
+                    cards={this.props.cards}
+                />
+                <br/>
                 <button onClick={()=>this.props.handlePotClick()}>Click to Pot</button>
             </div>
         )

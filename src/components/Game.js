@@ -22,7 +22,8 @@ class Game extends React.Component {
             userfocus: [],
             currentdealer: [],
             potData:[],
-            testInputfocus : 0,
+            cardsData : [],
+            testInputfocus : 0
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleFold = this.handleFold.bind(this)
@@ -165,8 +166,6 @@ class Game extends React.Component {
         this.setInputfocus(1);
     }
 
-    // filter(word => word.length > 6)
-
     handleFold(e) {
         this.setState(
             (prevState)=>{
@@ -190,7 +189,6 @@ class Game extends React.Component {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
     }
-
 
     handleBet(e,f) {
         // console.log(e,f)
@@ -222,7 +220,6 @@ class Game extends React.Component {
         headers: { 'Content-Type': 'multipart/form-data' },
         })
     }
-
 
     handleDealChange(e) {
         this.setState(
@@ -327,6 +324,15 @@ class Game extends React.Component {
 
         })
 
+        ///// Get cards list ///
+        axios.get("PokerBO/Model/Requests/getcards.php?")
+        .then(res => {
+            const cards = res.data; 
+            this.setState({
+                cards: cards
+            });
+        })
+
         ///// Get pot ///
         axios.get("PokerBO/Model/Requests/getpot.php?")
         .then(res => {
@@ -359,6 +365,15 @@ class Game extends React.Component {
                 
             })
 
+            ///// Get cards list ///
+            axios.get("PokerBO/Model/Requests/getcards.php?")
+            .then(res => {
+                const cards = res.data; 
+                this.setState({
+                    cards: cards
+                });
+            })
+
         },1000)
 
     }  
@@ -370,7 +385,7 @@ class Game extends React.Component {
     }
 
     render(){
-        // console.log(this.state.users)
+    // console.log(this.state.users)
     // console.log(this.state.testInputfocus)
     // console.log(this.state.potData)
 
@@ -393,12 +408,14 @@ class Game extends React.Component {
                     <Pot
                         pot={this.state.potData}
                         handlePotClick={this.handlePotClick}
+                        cards={this.state.cards}
                     />
                     <UserList
                         users={this.state.users}
                         handleClick={this.handleClick}
                         handleDealChange={this.handleDealChange}
                         userfocus={this.state.userfocus}
+                        cards={this.state.cards}
                     />
 
                     <Action     
