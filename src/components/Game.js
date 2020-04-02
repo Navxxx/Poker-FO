@@ -75,6 +75,18 @@ class Game extends React.Component {
             }
         )
 
+        //clear visibility of cards
+        const formb = new FormData()
+        axios.post('/PokerBO/Model/Requests/postclearvisibility.php', form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+          })
+
+        //shuffle new deck
+        const formc = new FormData()
+        axios.post('/PokerBO/Model/Requests/postshuffle.php', form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+          })
+
     }
 
     handleTakeAll(e) {
@@ -185,7 +197,6 @@ class Game extends React.Component {
         }
 
     }
-
 
     handleFold(e) {
         this.setState(

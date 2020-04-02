@@ -31,6 +31,7 @@ class UserList extends React.Component {
                 userfocus={this.props.userfocus}
                 cards={this.props.cards}
                 toggleCard={this.props.toggleCard}
+                currentuser={this.props.users[0]}
 
             />
         )

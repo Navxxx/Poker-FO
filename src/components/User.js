@@ -24,7 +24,7 @@ class User extends React.Component {
         return (
             <div >
                 <div onClick={()=>this.props.handleDealChange(this.props.id)}>
-                    Dealer : {this.props.dealer} 
+                Dealer : {this.props.dealer} 
                 </div>
                 Name : {this.props.name} 
                 <br/>
@@ -47,6 +47,7 @@ class User extends React.Component {
                     display={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._display}
                     toggleCard={this.props.toggleCard}
                     sitnumber={this.props.sitnumber}
+                    currentuser={this.props.currentuser}
                  />
                  <Card
                     idcard={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._idcard}
@@ -55,6 +56,8 @@ class User extends React.Component {
                     display={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._display}
                     toggleCard={this.props.toggleCard}
                     sitnumber={this.props.sitnumber}
+                    currentuser={this.props.currentuser}
+
 
                  />
                                  <br/>
