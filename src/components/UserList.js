@@ -30,6 +30,8 @@ class UserList extends React.Component {
                 chips={user._chips}
                 userfocus={this.props.userfocus}
                 cards={this.props.cards}
+                toggleCard={this.props.toggleCard}
+
             />
         )
         return (

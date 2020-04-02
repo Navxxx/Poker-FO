@@ -12,7 +12,7 @@ class Card extends React.Component {
 
     render() {
         return (
-             <div>
+             <div onClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}>
                  --------------
                  <br/>
                 {this.props.num} 

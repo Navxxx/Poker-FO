@@ -30,6 +30,8 @@ class Pot extends React.Component {
 
                 <Deck
                     cards={this.props.cards}
+                    toggleCard={this.props.toggleCard}
+
                 />
                 <br/>
                 <button onClick={()=>this.props.handlePotClick()}>Click to Pot</button>

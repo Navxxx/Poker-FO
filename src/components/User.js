@@ -45,12 +45,17 @@ class User extends React.Component {
                     num={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._num}
                     family={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._family}
                     display={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._display}
+                    toggleCard={this.props.toggleCard}
+                    sitnumber={this.props.sitnumber}
                  />
                  <Card
                     idcard={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._idcard}
                     num={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._num}
                     family={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._family}
                     display={this.props.cards[this.props.sitnumber+5+this.props.sitnumber-1]._display}
+                    toggleCard={this.props.toggleCard}
+                    sitnumber={this.props.sitnumber}
+
                  />
                                  <br/>
 

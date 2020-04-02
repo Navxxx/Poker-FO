@@ -36,6 +36,7 @@ class Game extends React.Component {
         this.handlePotClick = this.handlePotClick.bind(this)
         this.setInputfocus = this.setInputfocus.bind(this)
         this.validateResult = this.validateResult.bind(this)
+        this.toggleCard = this.toggleCard.bind(this)
     }
     
     validateResult(){
@@ -165,6 +166,26 @@ class Game extends React.Component {
         //focus text
         this.setInputfocus(1);
     }
+
+    toggleCard(e, f){
+        
+        f = parseInt(f)
+        // console.log(f)
+        // console.log(this.state.users[0]._sitnumber)
+
+        if (f===this.state.users[0]._sitnumber || f===0 ){
+            // console.log("good")
+
+
+            const form = new FormData()
+            form.set('card_post', e)
+            axios.post('/PokerBO/Model/Requests/posttogglecardvisibility.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+            })
+        }
+
+    }
+
 
     handleFold(e) {
         this.setState(
@@ -409,6 +430,8 @@ class Game extends React.Component {
                         pot={this.state.potData}
                         handlePotClick={this.handlePotClick}
                         cards={this.state.cards}
+                        toggleCard={this.toggleCard}
+
                     />
                     <UserList
                         users={this.state.users}
@@ -416,6 +439,8 @@ class Game extends React.Component {
                         handleDealChange={this.handleDealChange}
                         userfocus={this.state.userfocus}
                         cards={this.state.cards}
+                        toggleCard={this.toggleCard}
+
                     />
 
                     <Action     
