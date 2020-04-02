@@ -11,7 +11,7 @@ class Card extends React.Component {
     }
 
     render() {
-        console.log(this.props.currentuser)
+        // console.log(this.props.currentuser)
 
         let card
         // if current user is load

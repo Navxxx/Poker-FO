@@ -15,7 +15,7 @@ class Deck extends React.Component {
     
     render() {
 
-        console.log(this.props.cards)
+      //   console.log(this.props.cards)
         return (
              <div>
                  <Card

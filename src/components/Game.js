@@ -87,6 +87,18 @@ class Game extends React.Component {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
+        // clear pot
+        const formd = new FormData()
+        axios.post('/PokerBO/Model/Requests/postclearpot.php', form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+          })
+
+        // clear fold and bet
+        const forme = new FormData()
+        axios.post('/PokerBO/Model/Requests/postclearbetfold.php', form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+          })
+
     }
 
     handleTakeAll(e) {
@@ -166,11 +178,12 @@ class Game extends React.Component {
 
     handleClick(e) {
         this.setState({focus:"true"})
-        // console.log(e)
-        this.state.users.map((user, i)=>{
-            if (i+1 === e )
+        console.log(this.state.users)
+        this.state.users.map((user)=>{
+            if (user._iduser === e )
+            // console.log(i)
+
             return (
-                // console.log(e)
                 this.setState({userfocus:user})
             )
         })
