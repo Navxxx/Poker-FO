@@ -15,6 +15,7 @@ class Action extends React.Component {
     }
     
     handleChange(event) {
+        // console.log(event)
         const {name, value} = event.target
         if (value >= 0){ 
             this.setState ({

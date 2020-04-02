@@ -10,26 +10,20 @@ class Results extends React.Component {
             // usersgain : [],
             // gainloaddata :false
         }
+        this.sumGain = this.sumGain.bind(this)
+
     }
 
-// componentDidMount() {
-//     const usersgaintemp = [];
 
-//     this.props.users.map(
-//         user => {
-//             usersgaintemp.push({"_idusergain" : user._iduser, "_amountgain" : 0 ,"_namegain" : user._name})
-//         }
-//     )
-//     // usersgain.push({"toto" : 0})
-//     console.log(usersgaintemp)
-//     // console.log(this.props.users)  
-//     this.setState({
-//         usersgain: usersgaintemp,
-//         gainloaddata:true,
-//     });
-//     //console.log(this.state.usersgain)  
-// }
-    
+
+    sumGain(array) {
+        let Totalgain = 0
+        array.forEach(user => {
+            Totalgain += user._gain
+        });
+        return Totalgain
+    } 
+
     render() {
 
         const Userfields = this.props.users.map(
@@ -38,20 +32,28 @@ class Results extends React.Component {
                 key={user._iduser}
                 name={user._name}
                 sitnumber={user._sitnumber}
-                // gain = {this.state.usersgain.find(function (usergain) {
-                //     return usergain._idusergain === user._iduser;
-                //   })}
+                handleChange={this.props.handleChange}
+                gain = {this.props.gains.find(function (item) {
+                    return item._iduser === user._iduser;
+                  })}
                 // gainloaddata = {this.state.gainloaddata}
-                gain={user._gain}
+                gainbdd={user._gain}
             />
         )
         
         // console.log(this.state.usersgain)  
+    
+        
+
 
         return (
              <div>
-                 Results : 
+                Results : {this.sumGain(this.props.gains)} {this.sumGain(this.props.users)}  
                 {Userfields}
+                <button onClick={()=>this.props.handleGainChange()}
+                >
+                    Apply changes
+                </button>
                 <button>Validate</button>
             </div>
         )

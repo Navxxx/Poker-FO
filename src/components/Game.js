@@ -18,6 +18,7 @@ class Game extends React.Component {
         this.state = {
             userDataisLoaded : false,
             users: [],
+            gains: [],
             userfocus: [],
             currentdealer: [],
             potData:[],
@@ -27,11 +28,66 @@ class Game extends React.Component {
         this.handleFold = this.handleFold.bind(this)
         this.handleBet = this.handleBet.bind(this)
         this.handleDealChange = this.handleDealChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleGainChange = this.handleGainChange.bind(this)
 
         this.handlePotClick = this.handlePotClick.bind(this)
         this.setInputfocus = this.setInputfocus.bind(this)
     }
     
+
+
+    handleChange(e,f) {
+        console.log(e)
+        console.log(f)
+        // console.log(g)
+
+
+
+        const {value} = e.target
+        this.setState(
+            (prevState)=>{
+                const newStateGains = prevState.gains.map(
+                    (gain, i) => {
+                        if (i+1 === f) {
+                            gain._gain = parseInt(value)
+                        }
+                        return gain
+                    }
+                )
+                return({
+                    gains: newStateGains
+                })
+            }
+        )
+        // console.log(this.state.users)
+
+        // const form = new FormData()
+        // form.set('gain_post', parseInt(value))     
+        // form.set('player_post', i+1)
+        // axios.post('/PokerBO/Model/Requests/postgain.php', form, {
+        // headers: { 'Content-Type': 'multipart/form-data' },
+        //   })
+
+
+    }
+
+    handleGainChange(){
+        console.log("handleGainChange")
+
+        this.state.gains.forEach(function(item){
+            console.log(item)
+            const form = new FormData()
+            form.set('gain_post', item._gain)
+            form.set('player_post', item._iduser)
+            axios.post('/PokerBO/Model/Requests/postgain.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+              })
+        });
+
+
+
+    }
 
     handleClick(e) {
         this.setState({focus:"true"})
@@ -196,6 +252,18 @@ class Game extends React.Component {
                 users: users,
                 userfocus: users[0],
             });
+            //// settings gains state according to users
+            var gains = [];
+            users.forEach(function(item){
+                gains.push({_iduser : item._iduser, _name:item._name, _gain:0});
+            });
+            // console.log(users)
+            // console.log(gains)
+            this.setState({
+                gains: gains,
+            });
+            // console.log(this.state.gains)
+
         })
 
         ///// Get pot ///
@@ -241,7 +309,7 @@ class Game extends React.Component {
     }
 
     render(){
-        console.log(this.state.users)
+        // console.log(this.state.users)
     // console.log(this.state.testInputfocus)
     // console.log(this.state.potData)
 
@@ -254,7 +322,9 @@ class Game extends React.Component {
                     {/* {this.state.user} */}
                     <Results 
                         users={this.state.users}
-
+                        gains={this.state.gains}
+                        handleChange={this.handleChange}
+                        handleGainChange={this.handleGainChange}
                     />
                     <Pot
                         pot={this.state.potData}

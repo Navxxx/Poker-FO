@@ -20,10 +20,11 @@ class Userfield extends React.Component {
                 <input 
                         keyboardtype='numeric'
                         type="number"
-                        name="bet"
-                        placeholder={this.props.gain}
+                        name="gain"
+                        value={this.props.gain._gain}
+                        onChange={(e) => this.props.handleChange(e,this.props.id)}
                 />
-                
+                {this.props.gainbdd}
             </div>
         )
     }
