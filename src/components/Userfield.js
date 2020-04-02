@@ -17,6 +17,7 @@ class Userfield extends React.Component {
         return (
              <div>
                 {this.props.name} : 
+                <button onClick={()=>this.props.handleTakeAll(this.props.id)}>Take all</button>
                 <input 
                         keyboardtype='numeric'
                         type="number"

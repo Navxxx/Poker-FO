@@ -30,20 +30,76 @@ class Game extends React.Component {
         this.handleDealChange = this.handleDealChange.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleGainChange = this.handleGainChange.bind(this)
-
+        this.handleGainClear = this.handleGainClear.bind(this)
+        this.handleTakeAll = this.handleTakeAll.bind(this)
         this.handlePotClick = this.handlePotClick.bind(this)
         this.setInputfocus = this.setInputfocus.bind(this)
+        this.validateResult = this.validateResult.bind(this)
     }
     
+    validateResult(){
+        console.log("validateResult")
 
+        // give results to all players cash
+
+        this.state.users.forEach(function(item){
+            // console.log(item)
+            const form = new FormData()
+            form.set('money_post', item._gain)
+            form.set('player_post', item._iduser)
+            axios.post('/PokerBO/Model/Requests/postwin.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+              })
+        });
+
+        // clear results
+        const form = new FormData()
+        axios.post('/PokerBO/Model/Requests/postcleargain.php', form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+          })
+
+        //clear results state form
+        this.setState(
+            (prevState)=>{
+                const newStateGains = prevState.gains.map(
+                    (gain, i) => {
+                        gain._gain = parseInt(0)
+                        return gain
+                    }
+                )
+                return({
+                    gains: newStateGains
+                })
+            }
+        )
+
+    }
+
+    handleTakeAll(e) {
+        // console.log("handleTakeAll"+e)
+        // console.log(this.state.potData._amount)
+
+        this.setState(
+            (prevState)=>{
+                const newStateGains = prevState.gains.map(
+                    (gain, i) => {
+                        if (i+1 === e) {
+                            gain._gain = parseInt(this.state.potData._amount)
+                        }
+                        return gain
+                    }
+                )
+                return({
+                    gains: newStateGains
+                })
+            }
+        )
+    }
 
     handleChange(e,f) {
-        console.log(e)
-        console.log(f)
+        // console.log(e)
+        // console.log(f)
         // console.log(g)
-
-
-
         const {value} = e.target
         this.setState(
             (prevState)=>{
@@ -60,20 +116,27 @@ class Game extends React.Component {
                 })
             }
         )
-        // console.log(this.state.users)
+    }
 
-        // const form = new FormData()
-        // form.set('gain_post', parseInt(value))     
-        // form.set('player_post', i+1)
-        // axios.post('/PokerBO/Model/Requests/postgain.php', form, {
-        // headers: { 'Content-Type': 'multipart/form-data' },
-        //   })
-
-
+    handleGainClear() {
+        // console.log("handleGainClear")
+        this.setState(
+            (prevState)=>{
+                const newStateGains = prevState.gains.map(
+                    (gain) => {
+                            gain._gain = parseInt(0)
+                        return gain
+                    }
+                )
+                return({
+                    gains: newStateGains
+                })
+            }
+        )
     }
 
     handleGainChange(){
-        console.log("handleGainChange")
+        // console.log("handleGainChange")
 
         this.state.gains.forEach(function(item){
             console.log(item)
@@ -84,8 +147,6 @@ class Game extends React.Component {
             headers: { 'Content-Type': 'multipart/form-data' },
               })
         });
-
-
 
     }
 
@@ -325,6 +386,9 @@ class Game extends React.Component {
                         gains={this.state.gains}
                         handleChange={this.handleChange}
                         handleGainChange={this.handleGainChange}
+                        handleGainClear={this.handleGainClear}
+                        handleTakeAll={this.handleTakeAll}
+                        validateResult={this.validateResult}
                     />
                     <Pot
                         pot={this.state.potData}

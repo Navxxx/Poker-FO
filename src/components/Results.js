@@ -33,6 +33,7 @@ class Results extends React.Component {
                 name={user._name}
                 sitnumber={user._sitnumber}
                 handleChange={this.props.handleChange}
+                handleTakeAll={this.props.handleTakeAll}
                 gain = {this.props.gains.find(function (item) {
                     return item._iduser === user._iduser;
                   })}
@@ -50,11 +51,20 @@ class Results extends React.Component {
              <div>
                 Results : {this.sumGain(this.props.gains)} {this.sumGain(this.props.users)}  
                 {Userfields}
-                <button onClick={()=>this.props.handleGainChange()}
+                <button
+                    onClick={()=>this.props.handleGainChange()}
                 >
                     Apply changes
                 </button>
-                <button>Validate</button>
+                <button
+                    onClick={()=>this.props.handleGainClear()}
+                >
+                    Clear changes
+                </button>
+                <button
+                    onClick={()=>this.props.validateResult()}
+                >
+                    Validate</button>
             </div>
         )
     }
