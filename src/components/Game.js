@@ -42,7 +42,7 @@ class Game extends React.Component {
     }
     
     toggleResults(e) {
-        console.log("toogle")
+        // console.log("toogle")
         if (e===1) {
 
             this.setState(
@@ -56,7 +56,7 @@ class Game extends React.Component {
             )
 
             const form = new FormData()
-            axios.post('/PokerBO/Model/Requests/postwindowon.php', form, {
+            axios.post(domain+'postwindowon.php', form, {
             headers: { 'Content-Type': 'multipart/form-data' },
               })
         }
@@ -72,7 +72,7 @@ class Game extends React.Component {
                 }
             )        
             const form = new FormData()
-            axios.post('/PokerBO/Model/Requests/postwindowoff.php', form, {
+            axios.post(domain+'postwindowoff.php', form, {
             headers: { 'Content-Type': 'multipart/form-data' },
               })
         }
@@ -80,7 +80,7 @@ class Game extends React.Component {
     }
 
     validateResult(){
-        console.log("validateResult")
+        // console.log("validateResult")
 
         // give results to all players cash
 
@@ -89,14 +89,14 @@ class Game extends React.Component {
             const form = new FormData()
             form.set('money_post', item._gain)
             form.set('player_post', item._iduser)
-            axios.post('/PokerBO/Model/Requests/postwin.php', form, {
+            axios.post(domain+'postwin.php', form, {
             headers: { 'Content-Type': 'multipart/form-data' },
               })
         });
 
         // clear results
         const form = new FormData()
-        axios.post('/PokerBO/Model/Requests/postcleargain.php', form, {
+        axios.post(domain+'postcleargain.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
@@ -117,25 +117,25 @@ class Game extends React.Component {
 
         //clear visibility of cards
         const formb = new FormData()
-        axios.post('/PokerBO/Model/Requests/postclearvisibility.php', form, {
+        axios.post(domain+'postclearvisibility.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
         //shuffle new deck
         const formc = new FormData()
-        axios.post('/PokerBO/Model/Requests/postshuffle.php', form, {
+        axios.post(domain+'postshuffle.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
         // clear pot
         const formd = new FormData()
-        axios.post('/PokerBO/Model/Requests/postclearpot.php', form, {
+        axios.post(domain+'postclearpot.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
         // clear fold and bet
         const forme = new FormData()
-        axios.post('/PokerBO/Model/Requests/postclearbetfold.php', form, {
+        axios.post(domain+'postclearbetfold.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
@@ -205,11 +205,11 @@ class Game extends React.Component {
         // console.log("handleGainChange")
 
         this.state.gains.forEach(function(item){
-            console.log(item)
+            // console.log(item)
             const form = new FormData()
             form.set('gain_post', item._gain)
             form.set('player_post', item._iduser)
-            axios.post('/PokerBO/Model/Requests/postgain.php', form, {
+            axios.post(domain+'postgain.php', form, {
             headers: { 'Content-Type': 'multipart/form-data' },
               })
         });
@@ -266,7 +266,7 @@ class Game extends React.Component {
 
             const form = new FormData()
             form.set('card_post', e)
-            axios.post('/PokerBO/Model/Requests/posttogglecardvisibility.php', form, {
+            axios.post(domain+'posttogglecardvisibility.php', form, {
             headers: { 'Content-Type': 'multipart/form-data' },
             })
         }
@@ -292,7 +292,7 @@ class Game extends React.Component {
 
         const form = new FormData()
         form.set('player_post', e)
-        axios.post('/PokerBO/Model/Requests/postfold.php', form, {
+        axios.post(domain+'postfold.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
     }
@@ -317,13 +317,13 @@ class Game extends React.Component {
         const form = new FormData()
         form.set('bet_post', e)
         form.set('player_post', this.state.userfocus._iduser)
-        axios.post('/PokerBO/Model/Requests/postbet.php', form, {
+        axios.post(domain+'postbet.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
         const formb = new FormData()
         formb.set('player_post', e)
-        axios.post('/PokerBO/Model/Requests/postunfold.php', form, {
+        axios.post(domain+'postunfold.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
         })
     }
@@ -350,7 +350,7 @@ class Game extends React.Component {
 
         const form = new FormData()
         form.set('player_post', e)
-        axios.post('/PokerBO/Model/Requests/postdealer.php', form, {
+        axios.post(domain+'postdealer.php', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
     }
@@ -410,7 +410,7 @@ class Game extends React.Component {
 
     componentDidMount() {        
         ///// Get User list ///
-        axios.get("PokerBO/Model/Requests/getlist.php?")
+        axios.get(domain+'getlist.php?')
         .then(res => {
             const users = res.data; 
             this.setState({
@@ -432,7 +432,7 @@ class Game extends React.Component {
         })
 
         ///// Get cards list ///
-        axios.get("PokerBO/Model/Requests/getcards.php?")
+        axios.get(domain+'getcards.php?')
         .then(res => {
             const cards = res.data; 
             this.setState({
@@ -441,7 +441,7 @@ class Game extends React.Component {
         })
 
         ///// Get pot ///
-        axios.get("PokerBO/Model/Requests/getpot.php?")
+        axios.get(domain+'getpot.php?')
         .then(res => {
             const potData = res.data; 
             this.setState({
@@ -453,7 +453,7 @@ class Game extends React.Component {
         setInterval( () => {
             // console.log(this.props.user.iduser)
             ////// Get Pot
-            axios.get("PokerBO/Model/Requests/getpot.php?")
+            axios.get(domain+'getpot.php?')
             .then(res => {
                 const potData = res.data; 
                 this.setState({
@@ -461,7 +461,7 @@ class Game extends React.Component {
                 });
             })
             ///// Get User list ///
-            axios.get("PokerBO/Model/Requests/getlistordered.php?usersitnumber="+this.props.user.sitnumber)
+            axios.get(domain+'getlistordered.php?usersitnumber='+this.props.user.sitnumber)
             .then(res => {
                 const users = res.data; 
                 this.setState({
@@ -473,7 +473,7 @@ class Game extends React.Component {
             })
 
             ///// Get cards list ///
-            axios.get("PokerBO/Model/Requests/getcards.php?")
+            axios.get(domain+'getcards.php?')
             .then(res => {
                 const cards = res.data; 
                 this.setState({
@@ -494,7 +494,7 @@ class Game extends React.Component {
     render(){
     // console.log(this.state.users)
     // console.log(this.state.testInputfocus)
-    console.log(this.state.potData)
+    // console.log(this.state.potData)
     // console.log(this.state.cardsData)
         return (
 

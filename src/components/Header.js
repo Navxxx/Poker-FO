@@ -36,7 +36,6 @@ class Header extends React.Component {
                     > 
                         Cancel
                     </button>
-                    <a onClick={()=>this.props.handleUnLog()} href="http://localhost:3000/" style={decoLinkStyle}>deco</a>
                 </p>
             </div>
         )
