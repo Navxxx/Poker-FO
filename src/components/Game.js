@@ -37,8 +37,48 @@ class Game extends React.Component {
         this.setInputfocus = this.setInputfocus.bind(this)
         this.validateResult = this.validateResult.bind(this)
         this.toggleCard = this.toggleCard.bind(this)
+        this.toggleResults = this.toggleResults.bind(this)
+
     }
     
+    toggleResults(e) {
+        console.log("toogle")
+        if (e===1) {
+
+            this.setState(
+                (prevState)=>{
+                    let newStatepotData = prevState.potData
+                    newStatepotData._window = 1
+                    return({
+                        potData: newStatepotData
+                    })
+                }
+            )
+
+            const form = new FormData()
+            axios.post('/PokerBO/Model/Requests/postwindowon.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+              })
+        }
+
+        else {
+            this.setState(
+                (prevState)=>{
+                    let newStatepotData = prevState.potData
+                    newStatepotData._window = 0
+                    return({
+                        potData: newStatepotData
+                    })
+                }
+            )        
+            const form = new FormData()
+            axios.post('/PokerBO/Model/Requests/postwindowoff.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+              })
+        }
+
+    }
+
     validateResult(){
         console.log("validateResult")
 
@@ -178,7 +218,7 @@ class Game extends React.Component {
 
     handleClick(e) {
         this.setState({focus:"true"})
-        console.log(this.state.users)
+        // console.log(this.state.users)
         this.state.users.map((user)=>{
             if (user._iduser === e )
             // console.log(i)
@@ -198,9 +238,31 @@ class Game extends React.Component {
         // console.log(f)
         // console.log(this.state.users[0]._sitnumber)
 
+        // if the cards are from the current user or the deck, change its visibility
         if (f===this.state.users[0]._sitnumber || f===0 ){
             // console.log("good")
 
+            this.setState(
+                (prevState)=>{
+                    const newStateCards = prevState.cardsData.map(
+                        (card) => {
+                            if (card._idcard === e) {
+
+                                if (card._display === 0) {
+                                    card._display = 1
+                                }
+                                else {
+                                    card._display = 0
+                                }
+                            }
+                            return card
+                        }
+                    )
+                    return({
+                        cardsData: newStateCards
+                    })
+                }
+            )
 
             const form = new FormData()
             form.set('card_post', e)
@@ -374,7 +436,7 @@ class Game extends React.Component {
         .then(res => {
             const cards = res.data; 
             this.setState({
-                cards: cards
+                cardsData: cards
             });
         })
 
@@ -415,7 +477,7 @@ class Game extends React.Component {
             .then(res => {
                 const cards = res.data; 
                 this.setState({
-                    cards: cards
+                    cardsData: cards
                 });
             })
 
@@ -432,28 +494,37 @@ class Game extends React.Component {
     render(){
     // console.log(this.state.users)
     // console.log(this.state.testInputfocus)
-    // console.log(this.state.potData)
-
+    console.log(this.state.potData)
+    // console.log(this.state.cardsData)
         return (
 
             this.state.userDataisLoaded===true
             ?
                 <div>
-                    <Header user={this.props.user} handleUnLog={this.props.handleUnLog}/>
-                    {/* {this.state.user} */}
-                    <Results 
-                        users={this.state.users}
-                        gains={this.state.gains}
-                        handleChange={this.handleChange}
-                        handleGainChange={this.handleGainChange}
-                        handleGainClear={this.handleGainClear}
-                        handleTakeAll={this.handleTakeAll}
-                        validateResult={this.validateResult}
+                    <Header
+                        user={this.props.user}
+                        handleUnLog={this.props.handleUnLog}
+                        toggleResults = {this.toggleResults}
                     />
+                    {/* {this.state.user} */}
+                    {this.state.potData._window === 1 ?
+                    <Results 
+                    users={this.state.users}
+                    gains={this.state.gains}
+                    handleChange={this.handleChange}
+                    handleGainChange={this.handleGainChange}
+                    handleGainClear={this.handleGainClear}
+                    handleTakeAll={this.handleTakeAll}
+                    validateResult={this.validateResult}
+                      />
+                    :
+                    ""
+                    }
+
                     <Pot
                         pot={this.state.potData}
                         handlePotClick={this.handlePotClick}
-                        cards={this.state.cards}
+                        cards={this.state.cardsData}
                         toggleCard={this.toggleCard}
 
                     />
@@ -462,7 +533,7 @@ class Game extends React.Component {
                         handleClick={this.handleClick}
                         handleDealChange={this.handleDealChange}
                         userfocus={this.state.userfocus}
-                        cards={this.state.cards}
+                        cards={this.state.cardsData}
                         toggleCard={this.toggleCard}
 
                     />
