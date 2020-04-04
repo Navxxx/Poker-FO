@@ -125,7 +125,7 @@ class Card extends React.Component {
 
         return (
              <div 
-                className={cardvisibility + " card"}
+                className={cardvisibility + " card noselect"}
 
                 // onDoubleClick={}
                 
