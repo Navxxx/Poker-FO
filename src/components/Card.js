@@ -9,7 +9,20 @@ class Card extends React.Component {
         this.state = {
         }
 
+        this.handleButtonPress = this.handleButtonPress.bind(this)
+        this.handleButtonRelease = this.handleButtonRelease.bind(this)
     }
+
+    handleButtonPress () {
+        this.buttonPressTimer = setTimeout(() => 
+        {
+            this.props.toggleCard(this.props.idcard, this.props.sitnumber)
+        }, 500);
+      }
+    
+      handleButtonRelease () {
+        clearTimeout(this.buttonPressTimer);
+      }
 
     render() {
         // console.log(this.props.currentuser)
@@ -106,12 +119,22 @@ class Card extends React.Component {
             }
         }
 
+
+
+        
+
         return (
              <div 
                 className={cardvisibility + " card"}
 
-                onDoubleClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}
+                // onDoubleClick={}
                 
+                onTouchStart={this.handleButtonPress} 
+                onTouchEnd={this.handleButtonRelease} 
+                onMouseDown={this.handleButtonPress} 
+                onMouseUp={this.handleButtonRelease} 
+                onMouseLeave={this.handleButtonRelease}
+
             >
                  <br/>
                     <Twemoji text={num + fam} />
