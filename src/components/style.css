@@ -40,12 +40,38 @@
 body {
     margin : 0px;
 }
-
+#bet-form {
+    float: left;
+}
 .buttonapp {
     -webkit-appearance: none;
     height: 40px;
     margin: 4px;
   }
+
+  .button-inresult {
+    -webkit-appearance: none;
+    /* margin-left: 10px; */
+    height: 100%;
+
+}
+.resultbuttons {
+
+    height: 40px;
+
+}
+
+.resultbutton {
+
+    height: 100%;
+
+}
+.button-inaction {
+    -webkit-appearance: none;
+    height:30px;
+    width:50px;
+    float: left;
+}
 
 .card {
     display: inline-block;
@@ -199,12 +225,7 @@ text-align: center;
 
 }
 
-.button-inresult {
-    -webkit-appearance: none;
-    /* margin-left: 10px; */
-    height: 100%;
 
-}
 .input-inresult {
     margin-left: 10px;
 
@@ -214,17 +235,7 @@ text-align: center;
 
 }
 
-.resultbuttons {
 
-    height: 40px;
-
-}
-
-.resultbutton {
-
-    height: 100%;
-
-}
 
 .deck {
     margin-top: 5px;
@@ -236,7 +247,3 @@ text-align: center;
 width: 320px;
 }
 
-.button-inaction {
-    -webkit-appearance: none;
-    height:30px
-}

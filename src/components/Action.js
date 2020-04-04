@@ -56,6 +56,17 @@ class Action extends React.Component {
 
                     />
                     {/* <button onClick={this.handleClick}>Cancel</button> */}
+
+
+                    <button className="button-inaction" onClick={
+                        ()=>{
+                            this.props.handleFold(this.props.userfocus._iduser)
+                            this.eraseTextInput()
+                        }
+                        }>
+                            fold
+                    </button>
+
                     <button className="button-inaction" onClick={
                         ()=>{
                             this.props.handleBet(this.state.bet,this.props.userfocus._iduser)
@@ -66,14 +77,7 @@ class Action extends React.Component {
                             Bet
                     </button>
 
-                    <button className="button-inaction" onClick={
-                        ()=>{
-                            this.props.handleFold(this.props.userfocus._iduser)
-                            this.eraseTextInput()
-                        }
-                        }>
-                            fold
-                    </button>
+
 
                 </div>
             {/* } */}
