@@ -42,6 +42,7 @@ body {
 }
 
 .buttonapp {
+    -webkit-appearance: none;
     height: 40px;
     margin: 4px;
   }
@@ -199,6 +200,7 @@ text-align: center;
 }
 
 .button-inresult {
+    -webkit-appearance: none;
     /* margin-left: 10px; */
     height: 100%;
 
@@ -235,5 +237,6 @@ width: 320px;
 }
 
 .button-inaction {
+    -webkit-appearance: none;
     height:30px
 }
