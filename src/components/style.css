@@ -243,7 +243,7 @@ text-align: center;
 
 .gamecontainer {
     /* margin: 0 auto; */
-
+display: block;
 width: 320px;
 }
 
