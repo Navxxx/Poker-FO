@@ -45,14 +45,9 @@ class User extends React.Component {
                             // className={"secondline"} 
                             onClick={()=>this.props.handleClick(this.props.id)}>
 
-                            <div className={"left"}>
-                                <span className="username">{parseInt(this.props.cash)-parseInt(this.props.chips)} </span>
-                            </div>
+                            <span className="username">{parseInt(this.props.cash)-parseInt(this.props.chips)} </span>
+                            <span className="fold">{this.props.fold === 1?this.props.chips+" - Fold":this.props.chips}</span>
 
-                            <div className={"right"}>
-                                <span className="fold">{this.props.fold === 1?" - Fold":""}</span>
-                                <span className="bet" >{this.props.chips}</span>
-                            </div>
 
                         </div>
                     
