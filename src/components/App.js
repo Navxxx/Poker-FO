@@ -6,6 +6,13 @@ import './style.css';
 
 const domain = process.env.REACT_APP_DOMAIN
 // console.log(domain)
+
+
+// header won't be hidden on OnboardingScreen
+// class OnboardingScreen extends React.Component {
+//     static navigationOptions = { headerMode: null }
+//   }
+
 class App extends React.Component {
 
     constructor(){
