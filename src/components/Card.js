@@ -18,24 +18,59 @@ class Card extends React.Component {
 
         // let family = "X"
         // let number = 1
-        let visibility = "visibility-false"
+        // let visibility = "visibility-false"
 
         const a = "❤️"
         const b = "♣️"
         const c = "♦️"
         const d = "♠️"
 
+        let cardfamily = ""
+        let cardnumber = ""
+        let cardvisibility = "hidden"
+
+        // charging card data
+
+        let rootnum = this.props.num
+        let rootfam = ""
+        if (this.props.family === "heart") {
+            rootfam = a
+        } 
+
+        else if (this.props.family === "club") {
+            rootfam = b
+        } 
+
+        else if (this.props.family === "diamond") {
+            rootfam = c
+        } 
+
+        else if (this.props.family === "spade") {
+            rootfam = d
+        } 
+
+
+        let num = ""
+        let fam = ""
+
         // if current user is load
         if (typeof this.props.currentuser !== 'undefined'){
+
             // if the card belongs to the current user
             if (this.props.sitnumber===this.props.currentuser._sitnumber) {
                  // if visibility if yes
                  if(this.props.display===1) {
-                    card = this.props.num+" "+this.props.family+" visible"
+                    // card = this.props.num+" "+this.props.family+" visible"
+                    cardvisibility = "displayed"
+                    num = rootnum
+                    fam = rootfam
                  }
                 // if is hidden
                 else {
-                    card = this.props.num+" "+this.props.family+" hidden"
+                    // card = this.props.num+" "+this.props.family+" hidden"
+                    cardvisibility = "hidden-for-others"
+                    num = rootnum
+                    fam = rootfam
                  }
             }
              // if the card doesnt belongs to the current user
@@ -43,11 +78,14 @@ class Card extends React.Component {
             {
                 // if visibility if yes
                 if(this.props.display===1) {
-                    card = this.props.num+" "+this.props.family
+                    // card = this.props.num+" "+this.props.family
+                    cardvisibility = "displayed"
+                    num = rootnum
+                    fam = rootfam
                 }
                 // if is hidden
                 else {
-                    card = ""
+                    cardvisibility = "hidden"
                 }
             }
         }
@@ -55,24 +93,29 @@ class Card extends React.Component {
         else {
             // if visibility if yes
             if(this.props.display===1) {
-                card = this.props.num+" "+this.props.family
+                // card = this.props.num+" "+this.props.family
+                cardvisibility = "displayed"
+                num = rootnum
+                fam = rootfam
             }
             // if is hidden
             else {
-                card = ""
+                // card = ""
+                cardvisibility = "hidden"
+
             }
         }
 
         return (
              <div 
-                className={visibility + " card"}
+                className={cardvisibility + " card"}
 
                 onClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}
                 
             >
                  <br/>
-                    <Twemoji text={a+b+c+d} />
-                    {card}
+                    <Twemoji text={num + fam} />
+                    {/* {card} */}
                     <br/>
 
                     {/* dipslay : {this.props.display}

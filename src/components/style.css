@@ -9,8 +9,29 @@ body {
 
 .card {
     display: inline-block;
-    margin: 10px;
+    margin: 8px;
     height: 70px;
     width: 54px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.displayed {
     background-color: #f6f6ff;
+
+
+}
+
+.hidden-for-others {
+
+    background-color: #FFF0F0;
+
+}
+
+.hidden {
+    background-color: #FFF0F0;
+
+
 }
