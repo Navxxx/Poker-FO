@@ -35,7 +35,7 @@ class User extends React.Component {
                         <div className={"firstline"} onClick={()=>this.props.handleDealChange(this.props.id)}>
                                                       
                             <span className="username">{this.props.name}</span>
-                            <span className="dealer">{this.props.dealer? <Twemoji text="🪀" />  :""} </span>
+                            <span className="dealer">{this.props.dealer? "®" :""} </span>
 
                         </div>
 
