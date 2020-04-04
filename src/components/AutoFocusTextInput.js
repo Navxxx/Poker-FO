@@ -42,7 +42,8 @@ class AutoFocusTextInput extends React.Component {
              <div id="bet-form" >
                     <input ref={this.textInput}
                         keyboardtype='numeric'
-                        type="number"
+                        // type="number"
+                        inputmode="decimal"
                         value={this.props.bet}
                         name="bet"
                         onChange={this.props.handleChange}
