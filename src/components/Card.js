@@ -110,7 +110,7 @@ class Card extends React.Component {
              <div 
                 className={cardvisibility + " card"}
 
-                onClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}
+                onDoubleClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}
                 
             >
                  <br/>
