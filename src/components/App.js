@@ -61,7 +61,7 @@ class App extends React.Component {
              </div>
             :
             <div>
-                hello
+                {/* hello */}
                 <Login
                     handleLog={this.handleLog}
                 />
