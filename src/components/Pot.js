@@ -14,21 +14,22 @@ class Pot extends React.Component {
     render() {
         // console.log(this.props.cards)
 
-        const headerStyle = {
-            margin : "0px 0px 0px 0px",
-            padding : "10px 10px 10px 10px",
-            // backgroundColor : "black",
-            color : "black"
-        }
+        // const headerStyle = {
+        //     margin : "0px 0px 0px 0px",
+        //     padding : "10px 10px 10px 10px",
+        //     // backgroundColor : "black",
+        //     color : "black"
+        // }
 
         // console.log(this.props.pot._amount)
         return (
-             <div style={headerStyle}>
-                Pot : {this.props.pot._amount}
+            //  <div style={headerStyle}>
+            <div className="pot">
+                {/* Pot : {this.props.pot._amount}
                 <br/>
                 <button onClick={()=>this.props.handlePotClick()}>Click to Pot</button>
 
-                <br/>
+                <br/> */}
 
                 <Deck
                     cards={this.props.cards}

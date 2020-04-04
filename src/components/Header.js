@@ -39,6 +39,11 @@ class Header extends React.Component {
                     > 
                         Cancel
                     </button>
+
+                Pot : {this.props.pot._amount}
+                <button className="buttonapp" onClick={()=>this.props.handlePotClick()}>Click to Pot</button>
+
+                <br/>
                 </p>
             </div>
         )

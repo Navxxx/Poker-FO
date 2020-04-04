@@ -17,7 +17,7 @@ class Deck extends React.Component {
 
       //   console.log(this.props.cards)
         return (
-             <div>
+             <div className="deck">
                  <Card
                     idcard={this.props.cards[0]._idcard}
                     num={this.props.cards[0]._num}

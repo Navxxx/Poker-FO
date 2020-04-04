@@ -2,7 +2,9 @@ import React from "react";
 import UserList from "./UserList.js";
 import Action from "./Action.js";
 import Header from "./Header.js";
-import Pot from "./Pot.js";
+import Footer from "./Footer.js";
+
+import Deck from "./Deck.js";
 import Results from "./Results.js";
 
 import axios from 'axios';
@@ -505,6 +507,8 @@ class Game extends React.Component {
                         user={this.props.user}
                         handleUnLog={this.props.handleUnLog}
                         toggleResults = {this.toggleResults}
+                        pot={this.state.potData}
+                        handlePotClick={this.handlePotClick}
                     />
                     {/* {this.state.user} */}
                     {this.state.potData._window === 1 ?
@@ -521,13 +525,11 @@ class Game extends React.Component {
                     ""
                     }
 
-                    <Pot
-                        pot={this.state.potData}
-                        handlePotClick={this.handlePotClick}
+                    <Deck
                         cards={this.state.cardsData}
                         toggleCard={this.toggleCard}
+                      />
 
-                    />
                     
                     <UserList
                         users={this.state.users}
@@ -548,6 +550,7 @@ class Game extends React.Component {
                         handleBet={this.handleBet}
 
                     />
+                    <Footer />
                 </div>
             :
                 <div>loading</div>

@@ -34,7 +34,7 @@ class Action extends React.Component {
     render() {
         //console.log(this.props.userfocus)
         return (
-            <div>
+            <div className="action">
                 {/* {this.state.actionStatus==="normal"
                 ? */}
                     <div>
