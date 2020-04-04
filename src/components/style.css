@@ -190,7 +190,7 @@ text-align: center;
 }
 
 .gamecontainer {
-    margin: 0 auto;
+    /* margin: 0 auto; */
 
 width: 360px;
 }
