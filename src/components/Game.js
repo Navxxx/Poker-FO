@@ -502,7 +502,7 @@ class Game extends React.Component {
 
             this.state.userDataisLoaded===true
             ?
-                <div>
+                <div className="gamecontainer">
                     <Header
                         user={this.props.user}
                         handleUnLog={this.props.handleUnLog}
