@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card.js";
+import { Twemoji } from 'react-emoji-render';
 
 
 
@@ -22,24 +23,45 @@ class User extends React.Component {
 
     render(){
         return (
-            <div >
-                <div onClick={()=>this.props.handleDealChange(this.props.id)}>
-                Dealer : {this.props.dealer} 
-                </div>
-                Name : {this.props.name} 
-                <br/>
-                Cave : {parseInt(this.props.cash)-parseInt(this.props.chips)} 
-                <br/>
-                <div onClick={()=>this.props.handleClick(this.props.id)}>
+            <div className={
+                //if focus
+                this.props.userfocus._name===this.props.name?"usercontainer":"usercontainer"
+            }>
+                <div 
+                    // className={this.props.userfocus._name===this.props.name?"usercontent userfocus":"usercontent"}
+                    className={"usercontent"}
+                    >
+
+                        <div className={"firstline"} onClick={()=>this.props.handleDealChange(this.props.id)}>
+                                                      
+                            <span className="username">{this.props.name}</span>
+                            <span className="dealer">{this.props.dealer? <Twemoji text="🪀" />  :""} </span>
+
+                        </div>
+
+                        <div 
+                            className={this.props.userfocus._name===this.props.name?"secondline userfocus":"secondline"}
+
+                            // className={"secondline"} 
+                            onClick={()=>this.props.handleClick(this.props.id)}>
+
+                            <div className={"left"}>
+                                <span className="username">{parseInt(this.props.cash)-parseInt(this.props.chips)} </span>
+                            </div>
+
+                            <div className={"right"}>
+                                <span className="fold">{this.props.fold === 1?" - Fold":""}</span>
+                                <span className="bet" >{this.props.chips}</span>
+                            </div>
+
+                        </div>
                     
-                        <span>Mise : {this.props.chips}</span>
-                        <span>{this.props.fold === 1?" - Fold":""}</span>
 
+                    {/* Focus : {this.state.focus===false?"false":"true"} */}
+                    {/* Focus : {this.props.userfocus._name===this.props.name?"yes":"no"} */}
+
+                    <br/>
                 </div>
-                {/* Focus : {this.state.focus===false?"false":"true"} */}
-                Focus : {this.props.userfocus._name===this.props.name?"yes":"no"}
-
-                <br/>
                 <Card
                     idcard={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._idcard}
                     num={this.props.cards[this.props.sitnumber+4+this.props.sitnumber-1]._num}

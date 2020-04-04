@@ -9,7 +9,7 @@ body {
 
 .card {
     display: inline-block;
-    margin: 8px;
+    margin: 0px 5px 0px 0px;
     height: 70px;
     width: 54px;
     border-radius: 5px;
@@ -35,3 +35,78 @@ body {
 
 
 }
+
+.usercontent {
+    display: inline-block;
+    width : 180px;
+    margin-right: 5px;
+}
+
+
+
+.usercontainer {
+    display: flex;
+    /* margin-bottom: 10px; */
+    padding: 10px 0px 10px 0px;
+    height: 68px;
+
+}
+
+.userfocus {
+    background-color: #6fd22857;
+}
+
+.firstline {
+    height: 50%;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.secondline {
+    height: 50%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+
+}
+
+.username {
+    float: left;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.dealer {
+    float: right;
+    margin: 5px;
+    font-size: 20px;
+
+}
+
+.fold {
+    float: right;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.bet {
+    float: right;
+    margin: 5px;
+    font-size: 20px;
+
+}
+
+.left {
+    
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+
+.right {
+    width: 75%;
+    height: 100%;
+    float: right;
+} 
