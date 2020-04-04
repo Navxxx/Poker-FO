@@ -56,10 +56,11 @@ class Action extends React.Component {
 
                     />
                     {/* <button onClick={this.handleClick}>Cancel</button> */}
-                    <button className="button-inaction" OnClick={
+                    <button className="button-inaction" onClick={
                         ()=>{
                             this.props.handleBet(this.state.bet,this.props.userfocus._iduser)
                             this.eraseTextInput()
+                            console.log("PRESSE")
                         }
                         }>
                             Bet
