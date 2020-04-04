@@ -1,0 +1,16 @@
+body {
+    margin : 0px;
+}
+
+.buttonapp {
+    height: 40px;
+    margin: 4px;
+  }
+
+.card {
+    display: inline-block;
+    margin: 10px;
+    height: 70px;
+    width: 54px;
+    background-color: #f6f6ff;
+}

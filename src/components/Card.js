@@ -1,5 +1,6 @@
 import React from "react";
-
+import Emoji from "react-emoji-render";
+import { Twemoji } from 'react-emoji-render';
 
 class Card extends React.Component {
 
@@ -14,6 +15,16 @@ class Card extends React.Component {
         // console.log(this.props.currentuser)
 
         let card
+
+        // let family = "X"
+        // let number = 1
+        let visibility = "visibility-false"
+
+        const a = "❤️"
+        const b = "♣️"
+        const c = "♦️"
+        const d = "♠️"
+
         // if current user is load
         if (typeof this.props.currentuser !== 'undefined'){
             // if the card belongs to the current user
@@ -36,7 +47,7 @@ class Card extends React.Component {
                 }
                 // if is hidden
                 else {
-                    card = "XXXX"
+                    card = ""
                 }
             }
         }
@@ -48,15 +59,19 @@ class Card extends React.Component {
             }
             // if is hidden
             else {
-                card = "XXXX"
+                card = ""
             }
         }
 
         return (
-             <div onClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}>
-                 --------------
-                 <br/>
+             <div 
+                className={visibility + " card"}
 
+                onClick={()=>this.props.toggleCard(this.props.idcard, this.props.sitnumber)}
+                
+            >
+                 <br/>
+                    <Twemoji text={a+b+c+d} />
                     {card}
                     <br/>
 
@@ -64,7 +79,6 @@ class Card extends React.Component {
                     <br/>
                     id : {this.props.idcard}
                     <br/> */}
-                --------------
             </div>
         )
     }

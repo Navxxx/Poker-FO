@@ -2,6 +2,7 @@ import React from "react";
 import Game from "./Game.js";
 import Login from "./Login.js";
 import axios from 'axios';
+import './style.css';
 
 const domain = process.env.REACT_APP_DOMAIN
 // console.log(domain)
@@ -24,7 +25,7 @@ class App extends React.Component {
     
     componentDidMount() {     
         ////////// DEBUG NO LOGIN
-        // this.handleLog("toto", "toto")
+        this.handleLog("toto", "toto")
     }
 
     handleLog(e,f) {
@@ -55,22 +56,22 @@ class App extends React.Component {
         //console.log(this.state.user)
         return (
             /////  login.
-            this.state.isLoggedIn ?
-            <div>
-                <Game user={this.state.user} userName={this.state.userName} handleUnLog={this.handleUnLog}/>
-             </div>
-            :
-            <div>
-                {/* hello */}
-                <Login
-                    handleLog={this.handleLog}
-                />
-            </div>
+            // this.state.isLoggedIn ?
+            // <div>
+            //     <Game user={this.state.user} userName={this.state.userName} handleUnLog={this.handleUnLog}/>
+            //  </div>
+            // :
+            // <div>
+            //     {/* hello */}
+            //     <Login
+            //         handleLog={this.handleLog}
+            //     />
+            // </div>
 
             /// debug no login.
-            // <div>
-            // <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
-            // </div>
+            <div>
+            <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
+            </div>
 
 
 

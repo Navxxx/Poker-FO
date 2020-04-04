@@ -528,6 +528,7 @@ class Game extends React.Component {
                         toggleCard={this.toggleCard}
 
                     />
+                    
                     <UserList
                         users={this.state.users}
                         handleClick={this.handleClick}
