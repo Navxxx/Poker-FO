@@ -25,7 +25,7 @@ class App extends React.Component {
     
     componentDidMount() {     
         ////////// DEBUG NO LOGIN
-        this.handleLog("toto", "toto")
+        // this.handleLog("toto", "toto")
     }
 
     handleLog(e,f) {
@@ -56,22 +56,22 @@ class App extends React.Component {
         //console.log(this.state.user)
         return (
             /////  login.
-            // this.state.isLoggedIn ?
-            // <div>
-            //     <Game user={this.state.user} userName={this.state.userName} handleUnLog={this.handleUnLog}/>
-            //  </div>
-            // :
-            // <div>
-            //     {/* hello */}
-            //     <Login
-            //         handleLog={this.handleLog}
-            //     />
-            // </div>
+            this.state.isLoggedIn ?
+            <div>
+                <Game user={this.state.user} userName={this.state.userName} handleUnLog={this.handleUnLog}/>
+             </div>
+            :
+            <div>
+                {/* hello */}
+                <Login
+                    handleLog={this.handleLog}
+                />
+            </div>
 
             /// debug no login.
-            <div className="gamecontainer">
-            <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
-            </div>
+            // <div className="gamecontainer">
+            // <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
+            // </div>
 
 
 
