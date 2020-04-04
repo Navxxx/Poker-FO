@@ -118,11 +118,12 @@ bottom: 0;
 
 background-color: #ffffffd9;
 
-width: 100%;
+width: 360px;
 border-left: 2px solid black;
 border-right: 2px solid black;
 border-bottom: 2px solid black;
 border-top: 2px solid black;
+padding: 5px
 }
 
 
@@ -131,4 +132,69 @@ border-top: 2px solid black;
 margin-top: 60px;
 
 text-align: center;
+}
+
+.result {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+}
+
+.userfield {
+    border-bottom: 2px solid black;
+
+    height: 50px;
+    
+    /* padding-top: 15px; */
+    
+    /* padding-left: 10px; */
+    
+    font-size: 20px;
+}
+
+
+.name-inresult {
+    margin-left: 10px;
+
+}
+
+.button-inresult {
+    /* margin-left: 10px; */
+    height: 100%;
+
+}
+.input-inresult {
+    margin-left: 10px;
+
+}
+.gain-inresult {
+    margin-left: 10px;
+
+}
+
+.resultbuttons {
+
+    height: 40px;
+
+}
+
+.resultbutton {
+
+    height: 100%;
+
+}
+
+.deck {
+    margin-top: 5px;
+}
+
+.gamecontainer {
+    margin: 0 auto;
+
+width: 360px;
+}
+
+.button-inaction {
+    height:30px
 }

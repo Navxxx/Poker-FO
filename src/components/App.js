@@ -69,7 +69,7 @@ class App extends React.Component {
             // </div>
 
             /// debug no login.
-            <div>
+            <div className="gamecontainer">
             <Game user={this.state.user} handleUnLog={this.handleUnLog}/>
             </div>
 

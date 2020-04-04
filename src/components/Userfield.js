@@ -15,9 +15,11 @@ class Userfield extends React.Component {
         // console.log(this.props.gainloaddata)
 
         return (
-             <div>
-                {this.props.name} : 
-                <button onClick={()=>this.props.handleTakeAll(this.props.id)}>Take all</button>
+             <div className="userfield">
+                <button className="button-inresult" onClick={()=>this.props.handleTakeAll(this.props.id)}>Take all</button>
+                <span className="name-inresult">{this.props.name}</span>
+
+                <span className="input-inresult">
                 <input 
                         keyboardtype='numeric'
                         type="number"
@@ -25,7 +27,8 @@ class Userfield extends React.Component {
                         value={this.props.gain._gain}
                         onChange={(e) => this.props.handleChange(e,this.props.id)}
                 />
-                {this.props.gainbdd}
+                </span>
+                <span className="gain-inresult">{this.props.gainbdd}</span>
             </div>
         )
     }

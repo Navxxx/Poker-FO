@@ -48,23 +48,28 @@ class Results extends React.Component {
 
 
         return (
-             <div>
+             <div className="result">
                 Results : {this.sumGain(this.props.gains)} {this.sumGain(this.props.users)}  
                 {Userfields}
-                <button
-                    onClick={()=>this.props.handleGainChange()}
-                >
-                    Apply changes
-                </button>
-                <button
-                    onClick={()=>this.props.handleGainClear()}
-                >
-                    Clear changes
-                </button>
-                <button
-                    onClick={()=>this.props.validateResult()}
-                >
-                    Validate</button>
+                <div className="resultbuttons">
+                    <button
+                        className="resultbutton"
+                        onClick={()=>this.props.handleGainChange()}
+                    >
+                        Apply changes
+                    </button>
+                    <button
+                        className="resultbutton"
+                        onClick={()=>this.props.handleGainClear()}
+                    >
+                        Clear changes
+                    </button>
+                    <button
+                        className="resultbutton"
+                        onClick={()=>this.props.validateResult()}
+                    >
+                        Validate</button>
+                </div>
             </div>
         )
     }
