@@ -8,6 +8,7 @@ class Login extends React.Component {
             password :""
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
 
     }
 
@@ -16,14 +17,33 @@ class Login extends React.Component {
         this.setState({[name]:value})
     }
 
+    handleClick(e) {
+        this.setState(
+            (prevState)=>{
+                let newStatePassword = prevState.password
+                newStatePassword += e
+                console.log(newStatePassword)
+                if (newStatePassword.length===3) {
+                    console.log("trois")
+                    this.props.handleLog(newStatePassword)
+                    newStatePassword=""
+                }
+                return({
+                    password: newStatePassword
+                })
+            }
+        )
+
+    }
+
     // handleSubmit(e) {
     //     e.handleLog(this.state.firstname)
     // }
 
     render(){
         return (
-            <div> 
-                <p>Login</p>
+            <div className="login"> 
+                <p className="instruct">Tap your pass</p>
                 <form>
                     {/* <input
                         type="text"
@@ -33,19 +53,85 @@ class Login extends React.Component {
                         onChange={this.handleChange}
                     />
                     <br/> */}
-                    <input
+                    {/* <input
                         type="text"
                         value={this.state.password}
                         name="password"
                         placeholder="Password"
                         onChange={this.handleChange}
                     />
-                    <br/>
+                    <br/> */}
                 </form>
                 {/* <button onClick={()=>this.handleSubmit(this.props)}>Login</button> */}
-                <button onClick={()=>this.props.handleLog(this.state.password )} disabled={this.state.password.length===0}>Login</button>
+
+{/* 
+                <button onClick={()=>this.props.handleLog(this.state.password )} disabled={this.state.password.length===0}>Login</button> */}
+
+
+
                 {/* <p>Name : {this.state.firstname}</p> */}
-                <p>Password : {this.state.password}</p>
+                <p className="pass">{this.state.password.length===0?"___":this.state.password}</p>
+
+                <div className="keypad">
+
+                    <button
+                        onClick={()=>this.handleClick(1)}
+                        className="login-button">
+                        1
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(2)}
+                        className="login-button">
+                        2
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(3)}
+                        className="login-button">
+                        3
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(4)}
+                        className="login-button clear">
+                        4
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(5)}
+                        className="login-button">
+                        5
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(6)}
+                        className="login-button">
+                        6
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(7)}
+                        className="login-button clear">
+                        7
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(8)}
+                        className="login-button">
+                        8
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(9)}
+                        className="login-button">
+                        9
+                    </button>
+                    <button
+                        className="login-button clear empty">
+                    </button>
+                    <button
+                        onClick={()=>this.handleClick(0)}
+                        className="login-button ">
+                        0
+                    </button>
+                    <button
+                        className="login-button empty">
+                    </button>
+
+                </div>
             </div>
         )
     }
