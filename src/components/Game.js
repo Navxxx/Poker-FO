@@ -133,19 +133,19 @@ class Game extends React.Component {
         headers: { 'Content-Type': 'multipart/form-data' },
             })
 
-        //shuffle new deck
-        const formc = new FormData()
-        axios.post(domain+'postshuffle.php', formc, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-            })
+        // //shuffle new deck
+        // const formc = new FormData()
+        // axios.post(domain+'postshuffle.php', formc, {
+        // headers: { 'Content-Type': 'multipart/form-data' },
+        //     })
 
 
 
-        // clear fold and bet
-        const forme = new FormData()
-        axios.post(domain+'postclearbetfold.php', forme, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-            })
+        // // clear fold and bet
+        // const forme = new FormData()
+        // axios.post(domain+'postclearbetfold.php', forme, {
+        // headers: { 'Content-Type': 'multipart/form-data' },
+        //     })
     }
 
     handleTakeAll(e) {
