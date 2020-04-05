@@ -343,11 +343,11 @@ class Game extends React.Component {
         headers: { 'Content-Type': 'multipart/form-data' },
           })
 
-        const formb = new FormData()
-        formb.set('player_post', e)
-        axios.post(domain+'postunfold.php', form, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-        })
+        // const formb = new FormData()
+        // formb.set('player_post', e)
+        // axios.post(domain+'postunfold.php', form, {
+        // headers: { 'Content-Type': 'multipart/form-data' },
+        // })
     }
 
     handleDealChange(e) {
