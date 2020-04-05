@@ -320,21 +320,21 @@ class Game extends React.Component {
     }
 
     handleBet(e,f) {
-        console.log("handleBet")
-        this.setState(
-            (prevState)=>{
-                const newStateUsers = prevState.users.map(
-                    (user, i) => {
-                        if (i === f) {
-                            user._fold = 0;
-                            user._chips = e
-                        }
-                        return user
-                    }
-                )
-                return ({users:newStateUsers})
-            }
-        )
+        // console.log("handleBet")
+        // this.setState(
+        //     (prevState)=>{
+        //         const newStateUsers = prevState.users.map(
+        //             (user, i) => {
+        //                 if (i === f) {
+        //                     user._fold = 0;
+        //                     user._chips = e
+        //                 }
+        //                 return user
+        //             }
+        //         )
+        //         return ({users:newStateUsers})
+        //     }
+        // )
 
         const form = new FormData()
         form.set('bet_post', e)
