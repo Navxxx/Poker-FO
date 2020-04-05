@@ -32,7 +32,7 @@ class App extends React.Component {
     
     componentDidMount() {     
         ////////// DEBUG NO LOGIN
-        // this.handleLog("toto", "toto")
+        // this.handleLog("Térence", "toto")
     }
 
     handleLog(e,f) {

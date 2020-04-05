@@ -33,6 +33,7 @@ class Game extends React.Component {
         this.handleDealChange = this.handleDealChange.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleGainChange = this.handleGainChange.bind(this)
+        this.handleGainChangeClear = this.handleGainChange.bind(this)
         this.handleGainClear = this.handleGainClear.bind(this)
         this.handleTakeAll = this.handleTakeAll.bind(this)
         this.handlePotClick = this.handlePotClick.bind(this)
@@ -40,6 +41,8 @@ class Game extends React.Component {
         this.validateResult = this.validateResult.bind(this)
         this.toggleCard = this.toggleCard.bind(this)
         this.toggleResults = this.toggleResults.bind(this)
+        this.shuffle = this.shuffle.bind(this)
+
 
     }
     
@@ -87,7 +90,7 @@ class Game extends React.Component {
         // give results to all players cash
 
         this.state.users.forEach(function(item){
-            // console.log(item)
+            // console.log(item._gain)
             const form = new FormData()
             form.set('money_post', item._gain)
             form.set('player_post', item._iduser)
@@ -97,10 +100,10 @@ class Game extends React.Component {
         });
 
         // clear results
-        const form = new FormData()
-        axios.post(domain+'postcleargain.php', form, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-          })
+        // const formr = new FormData()
+        // axios.post(domain+'postcleargain.php', formr, {
+        // headers: { 'Content-Type': 'multipart/form-data' },
+        //   })
 
         //clear results state form
         this.setState(
@@ -117,30 +120,32 @@ class Game extends React.Component {
             }
         )
 
+    }
+
+    shuffle(){
         //clear visibility of cards
         const formb = new FormData()
-        axios.post(domain+'postclearvisibility.php', form, {
+        axios.post(domain+'postclearvisibility.php', formb, {
         headers: { 'Content-Type': 'multipart/form-data' },
-          })
+            })
 
         //shuffle new deck
         const formc = new FormData()
-        axios.post(domain+'postshuffle.php', form, {
+        axios.post(domain+'postshuffle.php', formc, {
         headers: { 'Content-Type': 'multipart/form-data' },
-          })
+            })
 
         // clear pot
         const formd = new FormData()
-        axios.post(domain+'postclearpot.php', form, {
+        axios.post(domain+'postclearpot.php', formd, {
         headers: { 'Content-Type': 'multipart/form-data' },
-          })
+            })
 
         // clear fold and bet
         const forme = new FormData()
-        axios.post(domain+'postclearbetfold.php', form, {
+        axios.post(domain+'postclearbetfold.php', forme, {
         headers: { 'Content-Type': 'multipart/form-data' },
-          })
-
+            })
     }
 
     handleTakeAll(e) {
@@ -218,6 +223,21 @@ class Game extends React.Component {
 
     }
 
+    handleGainChangeClear(){
+        // console.log("handleGainChange")
+
+        this.state.gains.forEach(function(item){
+            // console.log(item)
+            const form = new FormData()
+            form.set('gain_post', 0)
+            form.set('player_post', item._iduser)
+            axios.post(domain+'postgain.php', form, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+              })
+        });
+
+    }
+
     handleClick(e) {
         this.setState({focus:"true"})
         // console.log(this.state.users)
@@ -280,7 +300,7 @@ class Game extends React.Component {
             (prevState)=>{
                 const newStateUsers = prevState.users.map(
                     (user, i) => {
-                        if (i+1 === e) {
+                        if (i === e) {
                             user._fold = 1;
                         }
                         return user
@@ -300,12 +320,12 @@ class Game extends React.Component {
     }
 
     handleBet(e,f) {
-        // console.log(e,f)
+        console.log("handleBet")
         this.setState(
             (prevState)=>{
                 const newStateUsers = prevState.users.map(
                     (user, i) => {
-                        if (i+1 === f) {
+                        if (i === f) {
                             user._fold = 0;
                             user._chips = e
                         }
@@ -513,13 +533,17 @@ class Game extends React.Component {
                     {/* {this.state.user} */}
                     {this.state.potData._window === 1 ?
                     <Results 
+                    toggleResults = {this.toggleResults}
                     users={this.state.users}
                     gains={this.state.gains}
                     handleChange={this.handleChange}
                     handleGainChange={this.handleGainChange}
+                    handleGainChangeClear={this.handleGainChange}
+
                     handleGainClear={this.handleGainClear}
                     handleTakeAll={this.handleTakeAll}
                     validateResult={this.validateResult}
+                    shuffle={this.shuffle}
                       />
                     :
                     ""

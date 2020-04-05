@@ -15,7 +15,7 @@ class Action extends React.Component {
     }
     
     handleChange(event) {
-        // console.log(event)
+        // console.log("handlcechange")
         const {name, value} = event.target
         if (value >= 0){ 
             this.setState ({
@@ -37,14 +37,14 @@ class Action extends React.Component {
             <div className="action">
                 {/* {this.state.actionStatus==="normal"
                 ? */}
-                    <div>
+                    <div className="actionlabel">
                         Select an action for {this.props.userfocus._name}
                         <br/>
                         {/* <button onClick={this.handleClick}>bet</button> */}
                     </div>
                 {/* : */}
 
-                <div>
+                <div className="betform-container">
                     <AutoFocusTextInput
                         bet={this.state.bet}
                         handleChange={this.handleChange}
@@ -58,7 +58,7 @@ class Action extends React.Component {
                     {/* <button onClick={this.handleClick}>Cancel</button> */}
 
 
-                    <button className="button-inaction" onClick={
+                    <button className="button-inaction firstof" onClick={
                         ()=>{
                             this.props.handleFold(this.props.userfocus._iduser)
                             this.eraseTextInput()
@@ -71,7 +71,7 @@ class Action extends React.Component {
                         ()=>{
                             this.props.handleBet(this.state.bet,this.props.userfocus._iduser)
                             this.eraseTextInput()
-                            console.log("PRESSE")
+                            // console.log("PRESSE")
                         }
                         }>
                             Bet

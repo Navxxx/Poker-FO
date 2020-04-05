@@ -10,41 +10,41 @@ class Header extends React.Component {
     }
 
     render(){
-        const headerStyle = {
-            margin : "0px 0px 0px 0px",
-            padding : "0px",
-            height : "48px",
-            backgroundColor : "black",
-            color : "white"
-        }
-        const decoLinkStyle = {
-            float :"right",
-            color :"white"
-        } 
-        // console.log(this.props.user)
+
+        // console.log()
 
         return (
-            <div style={headerStyle}>
-                <p>
+            <div className="headerStyle">
                     {/* Hello {this.props.user.name} */}
-                    <button
-                        className="buttonapp"
-                        onClick={()=>this.props.toggleResults(1)}
-                    > 
-                        Finish game
-                    </button>
-                    <button
-                        className="buttonapp"
-                        onClick={()=>this.props.toggleResults(0)}
-                    > 
-                        Cancel
-                    </button>
+                    {this.props.pot._window?
 
-                Pot : {this.props.pot._amount}
-                <button className="buttonapp" onClick={()=>this.props.handlePotClick()}>Click to Pot</button>
+                    <button
+                    className="buttonapp buttonresults"
+                    onClick={()=>this.props.toggleResults(0)}
+                    > 
+                    Cancel
+                    </button>
+                    :
+                    <button
+                    className="buttonapp buttonresults"
+                    onClick={()=>this.props.toggleResults(1)}
+                    > 
+                    Finish game
+                    </button>
+                    
+ 
+                    }
+     
+
+ 
+
+
+                <button className="buttonapp center">
+                    Pot : {this.props.pot._amount}
+                </button>
+                <button className="buttonapp buttonclicktopot" onClick={()=>this.props.handlePotClick()}>Click to Pot</button>
 
                 <br/>
-                </p>
             </div>
         )
     }

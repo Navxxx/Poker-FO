@@ -21,6 +21,7 @@ class Userfield extends React.Component {
 
                 <span className="input-inresult">
                 <input 
+                        className="input-inresult"
                         keyboardtype='numeric'
                         type="number"
                         name="gain"

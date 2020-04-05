@@ -62,17 +62,60 @@ body {
 }
 #bet-form {
     float: left;
+    width: 150px;
+    width: 50%;
+}
+.betform-container {
+    border-top: 2px solid black;
+    width: 100%;
 }
 .buttonapp {
     -webkit-appearance: none;
     height: 40px;
-    margin: 4px;
+    margin: 0px;
+    background-color: black;
+
+    border-top: 0px solid black;
+    border-left: 2px solid white;
+    border-bottom: 0px solid black;
+    border-right: 0px solid black;
+
+    color: white;
+
   }
+  .buttonclicktopot{
+      float: right;
+      width: 30%;
+  } 
+
+  .buttonresults{
+    float: left;
+    border-left: 0px solid black;
+    border-right: 2px solid white;
+    width: 30%;
+} 
+
+.center{
+    display: inline-block;
+    margin:0 auto;
+    border-right: 0px solid #1e1e1e;
+    color: white;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
+}
+
 
   .button-inresult {
     -webkit-appearance: none;
     /* margin-left: 10px; */
     height: 100%;
+    background-color: white;
+    border-right: 2px solid #1e1e1e;
+    color: black;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
 
 }
 .resultbuttons {
@@ -81,18 +124,85 @@ body {
 
 }
 
+.headerStyle {
+    margin : 0px 0px 0px 0px;
+    padding : 0px;
+    /* height : 48px; */
+    background-color : black;
+    color : white;
+    text-align: center;
+} 
 .resultbutton {
-
+    -webkit-appearance: none;
     height: 100%;
+    background-color: white;
 
+}
+
+.leftbutton{
+    border-right: 0px solid #1e1e1e;
+    color: black;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
+    width: 25%;
+    float: left;
+} 
+.validatebutton {
+    border-right: 0px solid #1e1e1e;
+    color: black;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
+    width: 25%;
+    float: left;
+}
+
+.shufflebutton {
+    border-right: 0px solid #1e1e1e;
+    color: black;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
+    width: 25%;
+    clear: both;
+
+}
+.resultsum {
+    height: 20px;
+    padding: 5px 0px 0px 5px;
+    border-right: 0px solid #1e1e1e;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 2px solid black;
 }
 .button-inaction {
     -webkit-appearance: none;
     height:30px;
     width:50px;
     float: left;
+    background-color: white;
+    color: black;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
+    border-right: 0px solid black;
+    width: 25%;
 }
 
+.firstof {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+
+}
+
+.input-inaction {
+    height: 22px;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-bottom: 0px solid black;
+    border-right: 0px solid black;
+}
 .card {
     display: inline-block;
     margin: 0px 5px 0px 0px;
@@ -209,7 +319,10 @@ border-left: 2px solid black;
 border-right: 2px solid black;
 border-bottom: 2px solid black;
 border-top: 2px solid black;
-padding: 5px
+padding: 0px
+}
+.actionlabel {
+    margin:5px;
 }
 
 
@@ -224,7 +337,7 @@ text-align: center;
     border-left: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
-    border-top: 2px solid black;
+    border-top: 0px solid black;
 }
 
 .userfield {
@@ -248,6 +361,7 @@ text-align: center;
 
 .input-inresult {
     margin-left: 10px;
+    width: 50px;
 
 }
 .gain-inresult {

@@ -9,9 +9,10 @@ class Results extends React.Component {
         this.state = {
             // usersgain : [],
             // gainloaddata :false
+            proposed :0,
         }
         this.sumGain = this.sumGain.bind(this)
-
+        this.handlePropose = this.handlePropose.bind(this)
     }
 
 
@@ -23,6 +24,11 @@ class Results extends React.Component {
         });
         return Totalgain
     } 
+
+    handlePropose(e) {
+        // console.log(e)
+        this.setState({proposed:e})
+    }
 
     render() {
 
@@ -49,27 +55,55 @@ class Results extends React.Component {
 
         return (
              <div className="result">
-                Results : {this.sumGain(this.props.gains)} {this.sumGain(this.props.users)}  
-                {Userfields}
+                    <div className="resultsum">
+                        Total : {this.sumGain(this.props.gains)} {this.sumGain(this.props.users)}  
+                    </div>
+
+                    {Userfields}
                 <div className="resultbuttons">
+
                     <button
-                        className="resultbutton"
-                        onClick={()=>this.props.handleGainChange()}
+                    className="resultbutton leftbutton"
+                    onClick={()=>{
+                        this.props.handleGainChange()
+                        this.props.handleGainClear()
+                        this.handlePropose(1)
+                    }}
                     >
-                        Apply changes
+                    Apply changes
                     </button>
+
+                <button
+                className="resultbutton leftbutton"
+                onClick={()=>{
+                    
+                    this.props.handleGainChangeClear()
+                }}
+                >
+                    Clear changes
+                </button>
+                
+
                     <button
-                        className="resultbutton"
-                        onClick={()=>this.props.handleGainClear()}
-                    >
-                        Clear changes
-                    </button>
-                    <button
-                        className="resultbutton"
-                        onClick={()=>this.props.validateResult()}
+                        className="resultbutton validatebutton"
+                        onClick={()=>{
+                            this.props.validateResult()
+
+                            // this.props.toggleResults(0)
+                        }}
                     >
                         Validate</button>
-                </div>
+
+
+                <button
+                        className="resultbutton shufflebutton"
+                        onClick={()=>{
+                            this.props.shuffle()
+                            // this.props.toggleResults(0)
+                        }}
+                    >
+                        Shuffle</button>
+                        </div>
             </div>
         )
     }

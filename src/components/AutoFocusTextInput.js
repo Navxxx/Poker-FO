@@ -22,7 +22,7 @@ class AutoFocusTextInput extends React.Component {
       componentDidUpdate(prevProps) {
         if (this.props.testInputfocus !== 0) {
             this.textInput.current.focus();
-            // console.log("update");
+            // console.log(this.props.userfocus._iduser);
             this.props.setInputfocus(0);
             
         }
@@ -33,17 +33,18 @@ class AutoFocusTextInput extends React.Component {
             this.props.handleBet(this.props.bet)
             this.props.eraseTextInput()
         }
-        this.props.handleBet(this.props.bet,this.props.userfocus._iduser)
+        // console.log("handleKeyPress")
+        // this.props.handleBet(this.props.bet,this.props.userfocus._iduser)
       }
 
     render() {
         //console.log(this.props.userfocus)
         return (
              <div id="bet-form" >
-                    <input ref={this.textInput}
+                    <input className="input-inaction" ref={this.textInput}
                         keyboardtype='numeric'
                         // type="number"
-                        inputmode="decimal"
+                        inputMode="decimal"
                         value={this.props.bet}
                         name="bet"
                         onChange={this.props.handleChange}
