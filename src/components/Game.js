@@ -296,21 +296,21 @@ class Game extends React.Component {
     }
 
     handleFold(e) {
-        this.setState(
-            (prevState)=>{
-                const newStateUsers = prevState.users.map(
-                    (user, i) => {
-                        if (i === e) {
-                            user._fold = 1;
-                        }
-                        return user
-                    }
-                )
-                return({
-                    users: newStateUsers
-                })
-            }
-        )
+        // this.setState(
+        //     (prevState)=>{
+        //         const newStateUsers = prevState.users.map(
+        //             (user, i) => {
+        //                 if (i === e) {
+        //                     user._fold = 1;
+        //                 }
+        //                 return user
+        //             }
+        //         )
+        //         return({
+        //             users: newStateUsers
+        //         })
+        //     }
+        // )
 
         const form = new FormData()
         form.set('player_post', e)
