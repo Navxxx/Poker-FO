@@ -12,7 +12,7 @@ class Footer extends React.Component {
     render(){
 
         return (
-            <div className="footer">
+            <div className="footer noselect">
                 Made 4 Homies
             </div>
         )

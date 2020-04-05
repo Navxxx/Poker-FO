@@ -15,7 +15,7 @@ class Userfield extends React.Component {
         // console.log(this.props.gainloaddata)
 
         return (
-             <div className="userfield">
+             <div className="userfield noselect">
                 <button className="button-inresult" onClick={()=>this.props.handleTakeAll(this.props.id)}>Take all</button>
                 <span className="name-inresult">{this.props.name}</span>
 

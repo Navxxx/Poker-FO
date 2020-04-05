@@ -55,7 +55,7 @@ class Results extends React.Component {
 
         return (
              <div className="result">
-                    <div className="resultsum">
+                    <div className="resultsum noselect">
                         Total : {this.sumGain(this.props.gains)} {this.sumGain(this.props.users)}  
                     </div>
 
@@ -63,7 +63,7 @@ class Results extends React.Component {
                 <div className="resultbuttons">
 
                     <button
-                    className="resultbutton leftbutton"
+                    className="resultbutton leftbutton noselect"
                     onClick={()=>{
                         this.props.handleGainChange()
                         this.props.handleGainClear()
@@ -74,7 +74,7 @@ class Results extends React.Component {
                     </button>
 
                 <button
-                className="resultbutton leftbutton"
+                className="resultbutton leftbutton noselect"
                 onClick={()=>{
                     
                     this.props.handleGainChangeClear()
@@ -85,7 +85,7 @@ class Results extends React.Component {
                 
 
                     <button
-                        className="resultbutton validatebutton"
+                        className="resultbutton validatebutton noselect"
                         onClick={()=>{
                             this.props.validateResult()
 
@@ -96,7 +96,7 @@ class Results extends React.Component {
 
 
                 <button
-                        className="resultbutton shufflebutton"
+                        className="resultbutton shufflebutton noselect"
                         onClick={()=>{
                             this.props.shuffle()
                             // this.props.toggleResults(0)

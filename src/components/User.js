@@ -29,7 +29,7 @@ class User extends React.Component {
             }>
                 <div 
                     // className={this.props.userfocus._name===this.props.name?"usercontent userfocus":"usercontent"}
-                    className={"usercontent"}
+                    className={"usercontent noselect"}
                     >
 
                         <div className={"firstline"} onClick={()=>this.props.handleDealChange(this.props.id)}>
