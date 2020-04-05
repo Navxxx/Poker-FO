@@ -25,14 +25,14 @@ class Login extends React.Component {
             <div> 
                 <p>Login</p>
                 <form>
-                    <input
+                    {/* <input
                         type="text"
                         value={this.state.firstname}
                         name="firstname"
                         placeholder="Firstname"
                         onChange={this.handleChange}
                     />
-                    <br/>
+                    <br/> */}
                     <input
                         type="text"
                         value={this.state.password}
@@ -43,8 +43,8 @@ class Login extends React.Component {
                     <br/>
                 </form>
                 {/* <button onClick={()=>this.handleSubmit(this.props)}>Login</button> */}
-                <button onClick={()=>this.props.handleLog(this.state.firstname,this.state.password )} disabled={this.state.password.length===0 || this.state.firstname.length===0}>Login</button>
-                <p>Name : {this.state.firstname}</p>
+                <button onClick={()=>this.props.handleLog(this.state.password )} disabled={this.state.password.length===0}>Login</button>
+                {/* <p>Name : {this.state.firstname}</p> */}
                 <p>Password : {this.state.password}</p>
             </div>
         )

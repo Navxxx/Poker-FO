@@ -35,10 +35,10 @@ class App extends React.Component {
         // this.handleLog("Térence", "toto")
     }
 
-    handleLog(e,f) {
+    handleLog(e) {
         //console.log(e)
     
-        axios.get(domain+'getcheckid.php?name_get=' + e + '&password_get='+ f)
+        axios.get(domain+'getcheckid.php?password_get='+ e)
         .then(res => {
             const userData = res.data; 
             if (userData) {
