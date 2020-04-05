@@ -119,7 +119,11 @@ class Game extends React.Component {
                 })
             }
         )
-
+        // clear pot
+        const formd = new FormData()
+        axios.post(domain+'postclearpot.php', formd, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+            })
     }
 
     shuffle(){
@@ -135,11 +139,7 @@ class Game extends React.Component {
         headers: { 'Content-Type': 'multipart/form-data' },
             })
 
-        // clear pot
-        const formd = new FormData()
-        axios.post(domain+'postclearpot.php', formd, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-            })
+
 
         // clear fold and bet
         const forme = new FormData()
@@ -503,7 +503,7 @@ class Game extends React.Component {
                 });
             })
 
-        },1000)
+        },3000)
 
     }  
 
